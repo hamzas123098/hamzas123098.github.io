@@ -1,66 +1,181 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
-    <title>Kamer 2 - Phishing</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Kamer 1 - Wachtwoordveiligheid</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #38bdf8;
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #4ade80;
+            margin-top: 30px;
+        }
+        .puzzel-box {
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #0f172a;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid #475569;
+            transition: 0.2s;
+        }
+        li:hover {
+            border-color: #4ade80;
+            background: #1e293b;
+        }
+        .hint {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #020617;
+            border-left: 4px solid #4ade80;
+            color: #a7f3d0;
+        }
+        .fout-hint {
+            border-left: 4px solid #f87171;
+            color: #fca5a5;
+        }
+        input[type="text"] {
+            background-color: #020617;
+            border: 2px solid #38bdf8;
+            color: #fff;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 4px;
+            width: 150px;
+            text-align: center;
+        }
+        button {
+            background-color: #38bdf8;
+            color: #0f172a;
+            border: none;
+            padding: 11px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            background-color: #4ade80;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
+<h1>🔒 Kamer 1: Wachtwoordveiligheid</h1>
+<p>Welkom agent. Het systeem is vergrendeld. Los de 4 cybersecurity-puzzels op om de herstelcode te kraken. Klik op de opties om je antwoord te controleren.</p>
 
-<h1>📧 Kamer 2: Phishing</h1>
+<hr style="border-color: #334155;">
 
-<h2>Puzzel 1</h2>
-
-<p>
-Beste gebruiker,
-<br><br>
-Uw account verloopt vandaag.
-Klik direct op:
-<br><br>
-www.ing-bank-security-login.xyz
-</p>
-
-<p>
-Welk kenmerk maakt deze e-mail verdacht?
-</p>
-
-<p><b>Antwoord: Verdacht webadres → cijfer 4</b></p>
-
-<hr>
-
-<h2>Puzzel 2</h2>
-
-<p>Welke website is echt?</p>
-
-<ul>
-<li>paypa1.com</li>
-<li>paypal.com</li>
-<li>paypal-security.net</li>
-</ul>
-
-<p><b>Antwoord: paypal.com → cijfer 8</b></p>
-
-<hr>
-
-<h2>Puzzel 3</h2>
-
-<p>
-Hoe heet phishing via sms?
-</p>
-
-<p><b>Antwoord: Smishing → cijfer 3</b></p>
-
-<hr>
-
-<h2>Voer code in</h2>
-
-<input type="text" id="code">
-<button onclick="checkCode2()">Controleer</button>
-
+<div class="puzzel-box">
+    <h2>Puzzel 1: Wachtwoordsterkte</h2>
+    <p>Welk van de onderstaande wachtwoorden heeft de hoogste entropie (is het moeilijkst te kraken voor een computer)?</p>
+    <ul>
+        <li onclick="toonHint('p1-fout1', true)">welkom123</li>
+        <li onclick="toonHint('p1-fout2', true)">voetbal2026</li>
+        <li onclick="toonHint('p1-goed', false)">X7#kL9!pQ2</li>
+        <li onclick="toonHint('p1-fout3', true)">school123</li>
+    </ul>
+    <div id="p1-fout1" class="hint fout-hint">Helaas! Dit is een van de meest gebruikte wachtwoorden ter wereld en wordt binnen 1 seconde gekraakt via een dictionary attack. Probeer opnieuw.</div>
+    <div id="p1-fout2" class="hint fout-hint">Bijna, maar een woord gecombineerd met een jaartal is erg makkelijk te raden voor geautomatiseerde software. Probeer opnieuw.</div>
+    <div id="p1-fout3" class="hint fout-hint">Dit wachtwoord is veel te voorspelbaar en kort. Probeer opnieuw.</div>
+    <div id="p1-goed" class="hint"><b>Correct!</b> Dit wachtwoord gebruikt een combinatie van hoofdletters, kleine letters, cijfers en speciale tekens zonder logisch patroon. <br>🔑 <b>Noteer het eerste cijfer: 7</b></div>
 </div>
 
-<script src="script.js"></script>
+<div class="puzzel-box">
+    <h2>Puzzel 2: Meerfactorauthenticatie</h2>
+    <p>Welke methode zorgt voor een cruciale extra controlelaag, zodat een hacker met alleen jouw wachtwoord nog steeds niet kan inloggen?</p>
+    <ul>
+        <li onclick="toonHint('p2-goed', false)">Multi-Factor Authentication (2FA / MFA)</li>
+        <li onclick="toonHint('p2-fout1', true)">Je geboortedatum als back-up vraag instellen</li>
+        <li onclick="toonHint('p2-fout2', true)">Je wachtwoord elke 30 dagen veranderen naar iets soortgelijks</li>
+    </ul>
+    <div id="p2-fout1" class="hint fout-hint">Fout. Een geboortedatum is via social media (zoals Instagram of Facebook) heel makkelijk te achterhalen door een hacker.</div>
+    <div id="p2-fout2" class="hint fout-hint">Niet juist. Het constant veranderen van wachtwoorden zorgt er vaak voor dat mensen juist zwakkere wachtwoorden gaan kiezen (zoals Wachtwoord1!, Wachtwoord2!).</div>
+    <div id="p2-goed" class="hint"><b>Helemaal waar!</b> Met 2FA (zoals een SMS of authenticator-app) moet een hacker ook fysiek jouw telefoon in handen hebben. <br>🔑 <b>Noteer het tweede cijfer: 2</b></div>
+</div>
+
+<div class="puzzel-box">
+    <h2>Puzzel 3: Wachtwoordhygiëne</h2>
+    <p>Als één van de websites die jij gebruikt wordt gehackt en de database ligt op straat (credential stuffing), welke strategie heeft jou dan beschermd?</p>
+    <ul>
+        <li onclick="toonHint('p3-fout', true)">Overal hetzelfde, sterke master-wachtwoord gebruiken zodat je het niet vergeet.</li>
+        <li onclick="toonHint('p3-goed', false)">Voor werkelijk elke website of app een uniek wachtwoord gebruiken.</li>
+    </ul>
+    <div id="p3-fout" class="hint fout-hint">Gevaarlijk! Als een hacker dit wachtwoord eenmaal heeft, test software dit automatisch op honderden andere websites (Netflix, Gmail, DigiD). Je ligt overal open.</div>
+    <div id="p3-goed" class="hint"><b>Uitstekend!</b> Als er nu één site lekt, zijn je andere accounts nog volkomen veilig. <br>🔑 <b>Noteer het derde cijfer: 9</b></div>
+</div>
+
+<div class="puzzel-box">
+    <h2>Puzzel 4: Digitale Hulpmiddelen</h2>
+    <p>Omdat niemand 100 verschillende ingewikkelde wachtwoorden kan onthouden, raden cybersecurity-experts een bepaalde tool aan. Welke tool is speciaal ontworpen om al je unieke wachtwoorden versleuteld op te slaan?</p>
+    <ul>
+        <li onclick="toonHint('p4-fout1', true)">Een spreadsheet in Google Sheets of Excel</li>
+        <li onclick="toonHint('p4-fout2', true)">De ingebouwde 'Notities' app op je telefoon</li>
+        <li onclick="toonHint('p4-goed', false)">Een Wachtwoordbeheerder (Password Manager zoals Bitwarden of 1Password)</li>
+    </ul>
+    <div id="p4-fout1" class="hint fout-hint">Pas op! Digitale documenten die onbeveiligd op je computer of in de cloud staan, kunnen makkelijk worden uitgelezen door malware.</div>
+    <div id="p4-fout2" class="hint fout-hint">Incorret. Tenzij je deze notitie specifiek vergrendelt met een zware encryptie, is dit een heel makkelijk doelwit bij diefstal of hacken.</div>
+    <div id="p4-goed" class="hint"><b>Perfect!</b> Een password manager onthoudt en genereert alles voor je. Je hoeft zelf nog maar één sterk hoofdwachtwoord te onthouden. <br>🔑 <b>Noteer het vierde cijfer: 4</b></div>
+</div>
+
+<div class="puzzel-box" style="border: 2px solid #38bdf8;">
+    <h2>De Deur Ontgrendelen</h2>
+    <p>Combineer de vier verkregen cijfers in de juiste volgorde om de firewall te omzeilen:</p>
+    
+    <input type="text" id="code" placeholder="4-cijferige code">
+    <button onclick="checkCode()">Verifieer Code</button>
+</div>
+
+<script>
+// Functie om de hints netjes te tonen en oude te verbergen
+function toonHint(id, isFout) {
+    // Zoek de ouder-div (de puzzel-box) van het geklikte element
+    let box = document.getElementById(id).parentElement;
+    // Verberg eerst alle hints binnen deze specifieke puzzel-box
+    let hints = box.getElementsByClassName('hint');
+    for (let i = 0; i < hints.length; i++) {
+        hints[i].style.display = 'none';
+    }
+    // Toon de juiste hint
+    document.getElementById(id).style.display = 'block';
+}
+
+// Code validatie
+function checkCode() {
+    let code = document.getElementById("code").value.trim();
+
+    if(code === "7294") {
+        alert("Systeem hersteld! Toegang tot de serverruimte verleend. Je gaat nu naar Kamer 2.");
+        window.location.href = "kamer2.html"; // Zorg dat dit bestand straks bestaat!
+    } else {
+        alert("🚨 TOEGANG GEWEIGERD: De ingevoerde cryptografische sleutel is incorrect. Probeer het opnieuw.");
+    }
+}
+</script>
 
 </body>
 </html>

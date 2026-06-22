@@ -1,26 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
-    <title>Operatie Firewall</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operatie Firewall - Introductie</title>
+    <style>
+        body {
+            background-color: #020617; /* Extra donkere cyber achtergrond */
+            color: #e2e8f0;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Matrix-achtige achtergrond-glans */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(239, 68, 68, 0.15) 0%, transparent 60%);
+            z-index: 0;
+        }
+
+        .container {
+            background-color: #0f172a;
+            border: 2px solid #ef4444; /* Rode gloed voor de noodsituatie */
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.3);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 650px;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .warning-banner {
+            background-color: rgba(239, 68, 68, 0.2);
+            border: 1px solid #ef4444;
+            color: #f87171;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        h1 {
+            color: #ef4444; /* Rood alarm */
+            font-size: 32px;
+            margin-top: 0;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin: 20px 0;
+        }
+
+        .highlight {
+            color: #38bdf8; /* Cyaan highlight voor belangrijke info */
+            font-weight: bold;
+        }
+
+        .btn-container {
+            margin-top: 40px;
+        }
+
+        button {
+            background-color: transparent;
+            color: #ef4444;
+            border: 2px solid #ef4444;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+            letter-spacing: 2px;
+        }
+
+        button:hover {
+            background-color: #ef4444;
+            color: #020617;
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Subtiele animatie voor de waarschuwingsbalk */
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+            100% { opacity: 0.8; }
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🚨 OPERATIE FIREWALL 🚨</h1>
+    <div class="warning-banner">
+        ⚠️ Systeem Inbreuk Gedetecteerd ⚠️
+    </div>
+
+    <h1>OPERATIE FIREWALL</h1>
 
     <p>
-        Een hacker heeft een gevaarlijk virus op het schoolnetwerk geplaatst.
+        Een onbekende hackerscollectief heeft een destructief ransomware-virus op het schoolnetwerk geplaatst. De servers worden momenteel vergrendeld.
     </p>
 
     <p>
-        Jullie hebben 40 minuten om alle beveiligingskamers te doorlopen
-        en het virus uit te schakelen.
+        Jullie team is onze laatste hoop. Jullie hebben exact <span class="highlight">40 minuten</span> om alle digitale beveiligingskamers te hacken, de codes te kraken en het virus definitief uit te schakelen.
     </p>
 
-    <a href="kamer1.html">
-        <button>Start Missie</button>
-    </a>
+    <p style="font-style: italic; color: #94a3b8; font-size: 14px;">
+        Klik op de knop hieronder om de verbinding te starten. De tijd begint direct te lopen.
+    </p>
+
+    <div class="btn-container">
+        <a href="kamer1.html">
+            <button>Start Missie</button>
+        </a>
+    </div>
 </div>
 
 </body>

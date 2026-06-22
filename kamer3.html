@@ -1,53 +1,206 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
-    <title>Kamer 3 - Cryptografie</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Kamer 3 - Phishing & Social Engineering</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #eab308; /* Geel/oranje waarschuwingsthema voor Phishing */
+            border-bottom: 2px solid #eab308;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #4ade80;
+            margin-top: 30px;
+        }
+        .puzzel-box {
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #0f172a;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid #475569;
+            transition: 0.2s;
+        }
+        li:hover {
+            border-color: #eab308;
+            background: #1e293b;
+        }
+        .hint {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #020617;
+            border-left: 4px solid #4ade80;
+            color: #a7f3d0;
+        }
+        .fout-hint {
+            border-left: 4px solid #f87171;
+            color: #fca5a5;
+        }
+        .email-preview {
+            background-color: #020617;
+            border: 1px solid #eab308;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: sans-serif;
+            font-size: 14px;
+            color: #cbd5e1;
+            margin: 15px 0;
+        }
+        .email-header {
+            border-bottom: 1px solid #334155;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            background-color: #020617;
+            border: 2px solid #eab308;
+            color: #fff;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 4px;
+            width: 150px;
+            text-align: center;
+        }
+        button {
+            background-color: #eab308;
+            color: #0f172a;
+            border: none;
+            padding: 11px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            background-color: #4ade80;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
+<h1>🎣 Kamer 3: Phishing & Social Engineering</h1>
+<p>Pas op, agent! Je inbox overstroomt met verdachte berichten. Hackers proberen je inloggegevens te stelen via misleiding. Analyseer de dreigingen om de malware-filter te activeren.</p>
 
-<h1>🔐 Kamer 3: Cryptografie</h1>
+<hr style="border-color: #334155;">
 
-<h2>Puzzel 1</h2>
-
-<p>Ontcijfer:</p>
-
-<h3>KHOOR</h3>
-
-<p>Hint: 3 letters terug.</p>
-
-<p><b>HELLO → cijfer 5</b></p>
-
-<hr>
-
-<h2>Puzzel 2</h2>
-
-<h3>.... . .-.. .--.</h3>
-
-<p><b>HELP → cijfer 1</b></p>
-
-<hr>
-
-<h2>Puzzel 3</h2>
-
-<h3>ZHOFRPH</h3>
-
-<p>Hint: Caesar-versleuteling</p>
-
-<p><b>WELCOME → cijfer 6</b></p>
-
-<hr>
-
-<h2>Voer code in</h2>
-
-<input type="text" id="code">
-<button onclick="checkCode3()">Controleer</button>
-
+<div class="puzzel-box">
+    <h2>Puzzel 1: De URL Check</h2>
+    <p>Je ontvangt een SMS (smishing) die van je bank lijkt te komen. Welke van de onderstaande links is de <b>echte, veilige website</b> van de bank en GEEN phishinglink?</p>
+    <ul>
+        <li onclick="toonHint('p1-fout1', true)">https://www.rabobank.nl.veilig-inloggen.com/herstel</li>
+        <li onclick="toonHint('p1-fout2', true)">https://www.rab0bank.nl/login</li>
+        <li onclick="toonHint('p1-goed', false)">https://www.rabobank.nl/particulieren</li>
+        <li onclick="toonHint('p1-fout3', true)">http://www.rabobank-beveiliging.nl/updates</li>
+    </ul>
+    <div id="p1-fout1" class="hint fout-hint">Trapt er niet in! Het hoofd-domein van deze site is 'veilig-inloggen.com'. Alles wat daarvóór staat is een subdomein om jou te misleiden.</div>
+    <div id="p1-fout2" class="hint fout-hint">Kijk heel goed naar de spelling! Er staat een nul (0) in plaats van de letter 'o'. Dit noemen we typosquatting.</div>
+    <div id="p1-fout3" class="hint fout-hint">Gevaarlijk. Ten eerste gebruikt deze link 'http' in plaats van het beveiligde 'https'. Ten tweede is 'rabobank-beveiliging.nl' niet het officiële domein.</div>
+    <div id="p1-goed" class="hint"><b>Scherp gezien!</b> Dit is het officiële en correct gespelde domein met een beveiligde HTTPS-verbinding. <br>🔑 <b>Noteer het eerste cijfer: 4</b></div>
 </div>
 
-<script src="script.js"></script>
+<div class="puzzel-box">
+    <h2>Puzzel 2: Social Engineering Tactieken</h2>
+    <p>Bekijk de onderstaande e-mail. Welke specifieke psychologische manipulatietechniek wordt hier voornamelijk gebruikt om jou snel op de link te laten klikken?</p>
+    
+    <div class="email-preview">
+        <div class="email-header">Van: account-security@netflix-update.com<br>Onderwerp: Systeemwaarschuwing: Account wordt GEBLOKKEERD!</div>
+        Beste klant,<br><br>
+        Er is verdachte activiteit opgemerkt op uw account. U dient uw betalingsgegevens <b>binnen 2 uur</b> te verifiëren, anders wordt uw account permanent verwijderd en krijgt u een boete.<br><br>
+        <span style="color: #38bdf8; text-decoration: underline; cursor: pointer;">Klik hier om uw account te redden</span>
+    </div>
+
+    <ul>
+        <li onclick="toonHint('p2-goed', false)">Urgentie & Angst (Willekeurige tijdsdruk opvoeren)</li>
+        <li onclick="toonHint('p2-fout1', true)">Wederkerigheid (Jou iets gratis cadeau doen)</li>
+        <li onclick="toonHint('p2-fout2', true)">Autoriteit (Zich voordoen als de politie)</li>
+    </ul>
+    <div id="p2-fout1" class="hint fout-hint">Onjuist. Er wordt in deze mail niks leuks of gratis aangeboden, je wordt juist bedreigd met afsluiting.</div>
+    <div id="p2-fout2" class="hint fout-hint">Niet helemaal. Hoewel ze zich voordoen als een bekend bedrijf, ligt de nadruk hier op de '2 uur' tijdslimiet.</div>
+    <div id="p2-goed" class="hint"><b>Correct!</b> Phishing-aanvallers gebruiken bijna altijd kunstmatige urgentie ("reageer NU") zodat je in paniek raakt en stopt met logisch nadenken. <br>🔑 <b>Noteer het tweede cijfer: 1</b></div>
+</div>
+
+<div class="puzzel-box">
+    <h2>Puzzel 3: De Afzender Scannen</h2>
+    <p>Je krijgt een e-mail die afkomstig lijkt te zijn van je school. Waar moet je in de header als eerste naar kijken om te controleren of de mail echt is?</p>
+    <ul>
+        <li onclick="toonHint('p3-fout1', true)">De displaynaam (bijv. "Je School Administratie")</li>
+        <li onclick="toonHint('p3-fout2', true)">Het logo van de school dat bovenaan de mail staat</li>
+        <li onclick="toonHint('p3-goed', false)">Het daadwerkelijke e-mailadres achter de naam en de domeinnaam na de @</li>
+    </ul>
+    <div id="p3-fout1" class="hint fout-hint">Fout. Iedereen kan zijn weergavenaam handmatig aanpassen naar "Je School" of "De Politie". Dit zegt helaas helemaal niks.</div>
+    <div id="p3-fout2" class="hint fout-hint">Helaas. Een logo kan binnen één seconde van de schoolwebsite worden gekopieerd en in een valse mail geplakt worden.</div>
+    <div id="p3-goed" class="hint"><b>Helemaal juist!</b> De displaynaam kan vervalst zijn, maar de domeinnaam achter de @ (bijv. @school-phishing-site.com in plaats van @school.nl) verraadt de hacker direct. <br>🔑 <b>Noteer het derde cijfer: 8</b></div>
+</div>
+
+<div class="puzzel-box">
+    <h2>Puzzel 4: De Gevaarlijke Bijlage</h2>
+    <p>Een onbekende afzender stuurt je een e-mail met de tekst: <i>"Hier zijn de foto's van het klassenfeest!"</i>. Welke van de onderstaande bestanden is in werkelijkheid een gevaarlijk uitvoerbaar programma (malware) en geen afbeelding?</p>
+    <ul>
+        <li onclick="toonHint('p4-fout1', true)">klassenfeest_fotos.jpg</li>
+        <li onclick="toonHint('p4-fout2', true)">feest_overzicht.pdf</li>
+        <li onclick="toonHint('p4-goed', false)">leuke_fotos.jpg.exe</li>
+    </ul>
+    <div id="p4-fout1" class="hint fout-hint">Nee, .jpg is een standaard extensie voor afbeeldingen en is over het algemeen veilig om te openen.</div>
+    <div id="p4-fout2" class="hint fout-hint">Incorrect. Dit is een PDF-document. Hoewel PDF's misbruikt kunnen worden, is dit niet de gevaarlijkste uitvoerbare extensie uit de lijst.</div>
+    <div id="p4-goed" class="hint"><b>Trap er niet in!</b> Dit is een dubbele extensie. Windows verbergt vaak de laatste extensie, waardoor het lijkt op een afbeelding, maar in het echt start `.exe` direct een kwaadaardig programma op je pc! <br>🔑 <b>Noteer het vierde cijfer: 2</b></div>
+</div>
+
+<div class="puzzel-box" style="border: 2px solid #eab308;">
+    <h2>Het Anti-Phishing Filter Activeren</h2>
+    <p>Voer de 4-cijferige storingscode in om de kwaadaardige e-mails te blokkeren:</p>
+    
+    <input type="text" id="code" placeholder="4-cijferige code">
+    <button onclick="checkCode()">Activeer Filter</button>
+</div>
+
+<script>
+function toonHint(id, isFout) {
+    let box = document.getElementById(id).parentElement;
+    let hints = box.getElementsByClassName('hint');
+    for (let i = 0; i < hints.length; i++) {
+        hints[i].style.display = 'none';
+    }
+    document.getElementById(id).style.display = 'block';
+}
+
+function checkCode() {
+    let code = document.getElementById("code").value.trim();
+
+    // De correcte opbouw van de code is 4182
+    if(code === "4182") {
+        alert("🎣 FILTER GEACTIVEERD! Alle phishingmails zijn succesvol verwijderd. Je hebt de escaperoom overleefd en bent nu een gecertificeerd cybersecurity-expert!");
+        
+        // Als dit de laatste kamer is (groepje van 3), stuur ze naar een succes-pagina
+        // Als je een groepje van 4 hebt, verander dit dan naar "kamer4.html"
+        window.location.href = "win.html"; 
+    } else {
+        alert("🚨 FILTER MISLUKT: De ingevoerde code activeert het filter niet. Controleer je antwoorden.");
+    }
+}
+</script>
 
 </body>
 </html>

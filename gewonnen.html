@@ -1,32 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
-    <title>Gewonnen!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missie Geslaagd! - Gewonnen</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specifieke stijlen voor de overwinningspagina die perfect samensmelten met style.css */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Groene cyber-gloed in de achtergrond in plaats van het alarm-rood */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(74, 222, 128, 0.15) 0%, transparent 60%);
+            z-index: 0;
+        }
+
+        .win-container {
+            background-color: #0f172a;
+            border: 2px solid #4ade80; /* Groene border voor succes */
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
+            padding: 50px 40px;
+            border-radius: 12px;
+            text-align: center;
+            z-index: 1;
+            max-width: 650px;
+            position: relative;
+        }
+
+        .success-banner {
+            background-color: rgba(74, 222, 128, 0.2);
+            border: 1px solid #4ade80;
+            color: #4ade80;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .trophy {
+            font-size: 72px;
+            margin: 20px 0;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Coole zwevende animatie voor de beker */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
+<div class="win-container">
+    <div class="success-banner">
+        ✅ SYSTEEM VOLLEDIG VEILIG ✅
+    </div>
 
-<h1>🎉 MISSIE GESLAAGD 🎉</h1>
+    <h1 style="color: #4ade80; text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);">🎉 MISSIE GESLAAGD 🎉</h1>
 
-<h2>Virus uitgeschakeld!</h2>
+    <h2>Het virus is vernietigd!</h2>
 
-<p>
-Jullie hebben alle kamers opgelost
-en het schoolnetwerk gered.
-</p>
+    <p>
+        Jullie hebben met succes alle cybersecurity-puzzels opgelost, de firewalls hersteld en het schoolnetwerk gered van een totale shutdown.
+    </p>
 
-<p>
-De hacker is buitengesloten.
-</p>
+    <p>
+        De hackers zijn definitief buitengesloten en de buitgemaakte data is veilig gesteld. Uitstekend werk, agenten!
+    </p>
 
-<h1>🏆</h1>
+    <div class="trophy">🏆</div>
 
-<a href="index.html">
-<button>Speel opnieuw</button>
-</a>
-
+    <div style="margin-top: 30px;">
+        <a href="index.html">
+            <button class="btn-intro" style="color: #4ade80; border-color: #4ade80; box-shadow: 0 0 15px rgba(74, 222, 128, 0.2);" onmouseover="this.style.backgroundColor='#4ade80'; this.style.color='#020617'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4ade80'">
+                Speel Opnieuw
+            </button>
+        </a>
+    </div>
 </div>
 
 </body>
