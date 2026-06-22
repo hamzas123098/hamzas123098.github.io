@@ -1,3 +1,46 @@
+// ==========================================================================
+// UNIVERSELE ESCAPE ROOM TIMER
+// ==========================================================================
+document.addEventListener("DOMContentLoaded", function() {
+    // Als er nog geen starttijd is opgeslagen, maak er dan nu een aan (60 minuten)
+    if (!localStorage.getItem("escape_timer")) {
+        localStorage.setItem("escape_timer", 60 * 60); // 60 minuten in seconden
+    }
+
+    // Update de timer elke seconde
+    setInterval(function() {
+        let resterendeTijd = parseInt(localStorage.getItem("escape_timer"));
+        
+        if (resterendeTijd > 0) {
+            resterendeTijd--;
+            localStorage.setItem("escape_timer", resterendeTijd);
+            
+            // Bereken minuten en seconden
+            let minuten = Math.floor(resterendeTijd / 60);
+            let seconden = resterendeTijd % 60;
+            
+            // Zorg voor een extra nulletje als de seconden onder de 10 zijn (bijv. 05 in plaats van 5)
+            if (seconden < 10) seconden = "0" + seconden;
+            if (minuten < 10) minuten = "0" + minuten;
+
+            // Zoek het timer-element op het scherm en zet de tijd erin
+            let timerElement = document.getElementById("timer-display");
+            if (timerElement) {
+                timerElement.innerText = "⏱️ Tijd over: " + minuten + ":" + seconden;
+            }
+        } else {
+            // Tijd is op!
+            alert("🚨 DE TIJD IS OP! Het virus heeft het systeem volledig overgenomen. Je hebt verloren...");
+            localStorage.clear(); // Reset de timer
+            window.location.href = "index.html"; // Stuur ze terug naar het begin
+        }
+    }, 1000);
+});
+
+// ==========================================================================
+// CENTRALIZED ESCAPE ROOM LOGICA
+// ==========================================================================
+
 function toonHint(id, isFout) {
     let element = document.getElementById(id);
     if (!element) return;
@@ -42,6 +85,7 @@ function checkCode3() {
 
         if (eindcode === "754") {
             alert("🎉 GEFELICITEERD! Het virus is volledig gewist en de school-firewall is weer online. Jullie hebben de missie voltooid!");
+            localStorage.clear(); // Wis de timer bij winst
             window.location.href = "gewonnen.html"; 
         } else {
             alert("🚨 CORRUPTIE: Het virus weert de override af. Verkeerde master-override code.");

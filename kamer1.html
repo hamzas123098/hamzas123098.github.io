@@ -85,6 +85,10 @@
 </head>
 <body>
 
+<div id="timer-display" style="font-size: 24px; font-weight: bold; color: #f87171; background: #020617; padding: 10px; border: 2px solid #f87171; border-radius: 6px; display: inline-block; margin-bottom: 20px; font-family: monospace;">
+    ⏱️ Tijd over: 60:00
+</div>
+
 <h1>🔒 Kamer 1: Wachtwoordveiligheid</h1>
 <p>Welkom agent. Het systeem is vergrendeld. Los de 4 cybersecurity-puzzels op om de herstelcode te kraken. Klik op de opties om je antwoord te controleren.</p>
 
@@ -101,7 +105,7 @@
     </ul>
     <div id="p1-fout1" class="hint fout-hint">Helaas! Dit is een van de meest gebruikte wachtwoorden ter wereld en wordt binnen 1 seconde gekraakt via een dictionary attack. Probeer opnieuw.</div>
     <div id="p1-fout2" class="hint fout-hint">Bijna, maar een woord gecombineerd met een jaartal is erg makkelijk te raden voor geautomatiseerde software. Probeer opnieuw.</div>
-    <div id="p1-fout3" class="hint fout-hint">Dit wachtwoord is veel te voorspelbaar en kort. Probeer opnieuw.</div>
+    <div id="p1-fout3" class="hint fout-hint">Dit wachtwoord is veel te voorspelbaar ietwat kort. Probeer opnieuw.</div>
     <div id="p1-goed" class="hint"><b>Correct!</b> Dit wachtwoord gebruikt een combinatie van hoofdletters, kleine letters, cijfers en speciale tekens zonder logisch patroon. <br>🔑 <b>Noteer het eerste cijfer: 7</b></div>
 </div>
 
@@ -150,32 +154,7 @@
     <button onclick="checkCode()">Verifieer Code</button>
 </div>
 
-<script>
-// Functie om de hints netjes te tonen en oude te verbergen
-function toonHint(id, isFout) {
-    // Zoek de ouder-div (de puzzel-box) van het geklikte element
-    let box = document.getElementById(id).parentElement;
-    // Verberg eerst alle hints binnen deze specifieke puzzel-box
-    let hints = box.getElementsByClassName('hint');
-    for (let i = 0; i < hints.length; i++) {
-        hints[i].style.display = 'none';
-    }
-    // Toon de juiste hint
-    document.getElementById(id).style.display = 'block';
-}
-
-// Code validatie
-function checkCode() {
-    let code = document.getElementById("code").value.trim();
-
-    if(code === "7294") {
-        alert("Systeem hersteld! Toegang tot de serverruimte verleend. Je gaat nu naar Kamer 2.");
-        window.location.href = "kamer2.html"; // Zorg dat dit bestand straks bestaat!
-    } else {
-        alert("🚨 TOEGANG GEWEIGERD: De ingevoerde cryptografische sleutel is incorrect. Probeer het opnieuw.");
-    }
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
