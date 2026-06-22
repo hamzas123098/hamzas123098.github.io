@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kamer 1 - Wachtwoorden</title>
+</head>
+<body>
+
+<h1>🔒 Kamer 1: Wachtwoordveiligheid</h1>
+
+<p>Los de 3 puzzels op. Elke puzzel geeft een cijfer voor de code.</p>
+
+<h2>Puzzel 1</h2>
+<p>Welk wachtwoord is het sterkst?</p>
+<ul>
+    <li>welkom123</li>
+    <li>voetbal2025</li>
+    <li>X7#kL9!pQ2</li>
+    <li>school123</li>
+</ul>
+
+<p><b>Als je X7#kL9!pQ2 koos, noteer cijfer 7.</b></p>
+
+<hr>
+
+<h2>Puzzel 2</h2>
+<p>Welke beveiligingsmethode geeft een extra controlelaag?</p>
+
+<ul>
+    <li>2FA</li>
+    <li>Geboortedatum</li>
+    <li>Zelfde wachtwoord gebruiken</li>
+</ul>
+
+<p><b>Antwoord: 2FA → noteer cijfer 2.</b></p>
+
+<hr>
+
+<h2>Puzzel 3</h2>
+<p>Wat is veiliger?</p>
+
+<ul>
+    <li>Voor elke website een uniek wachtwoord</li>
+    <li>Overal hetzelfde wachtwoord</li>
+</ul>
+
+<p><b>Correct antwoord → noteer cijfer 9.</b></p>
+
+<hr>
+
+<h2>Voer de code in</h2>
+
+<p>Combineer de drie cijfers.</p>
+
+<input type="text" id="code">
+<button onclick="checkCode()">Controleer</button>
+
+<script>
+function checkCode() {
+    let code = document.getElementById("code").value;
+
+    if(code === "729") {
+        alert("Goed gedaan! Naar kamer 2.");
+        window.location.href = "kamer2.html";
+    } else {
+        alert("Verkeerde code, probeer opnieuw.");
+    }
+}
+</script>
+
+</body>
+</html>
