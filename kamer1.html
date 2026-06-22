@@ -62,7 +62,11 @@
             color: #4ade80;
         }
         .fout-hint {
+            display: none;
+            background: #020617;
+            padding: 15px;
             border-left: 4px solid #ef4444;
+            margin-top: 15px;
             color: #fca5a5;
         }
         input[type="text"] {
@@ -107,7 +111,7 @@
 <body>
 
 <div id="timer-display" style="font-size: 24px; font-weight: bold; color: #f43f5e; background: #0f172a; padding: 10px; border: 2px solid #f43f5e; border-radius: 6px; display: inline-block; margin-bottom: 20px; font-family: monospace; box-shadow: 0 0 15px rgba(244,63,94,0.2);">
-    ⏱️ Tijd over: 60:00
+    ⏱️ Tijd over: 30:00
 </div>
 
 <h1>☣️ SYSTEM OVERRIDE: SECURITY LEVEL MAX</h1>
@@ -143,7 +147,7 @@
     <input type="text" id="p2-input" placeholder="Typ de cyberterm...">
     <button onclick="checkPuzzel2()">Decodeer</button>
 
-    <div id="p2-fout" class="code-reveal fout-hint">❌ <b>DECRYPTION FAILED (-60s):</b> Onjuist woord. Hint: |*=# , 1=i , 5=s , |-| = h , |\| = n.</div>
+    <div id="p2-fout" class="fout-hint">❌ <b>DECRYPTION FAILED (-60s):</b> Onjuist woord. Hint: |* = p, # = h, 1 = i, 5 = s, |-| = h, |\| = n.</div>
     <div id="p2-goed" class="code-reveal">
         <b>[SUCCESS]</b> Data leesbaar gemaakt.<br>
         🔑 <b>Tweede Code-Fragment: 2</b>
@@ -153,12 +157,12 @@
 <div class="puzzel-box">
     <h2>Puzzel 3: De Wachtwoord Hash-Som</h2>
     <p>Bereken de cryptografische hash-waarde van het geheime wachtwoord <b>"CYBER"</b>.</p>
-    <p><b>Het Algoritme:</b> Vermenigvuldig de alfabet-positie van de eerste letter met de positie van de laatste letter ($A=1, B=2, C=3...$). Tel daar vervolgens de posities van de middelste drie letters bij op.</p>
+    <p><b>Het Algoritme:</b> Vermenigvuldig de alfabet-positie van de eerste letter met de positie van de laatste letter (A=1, B=2...). Tel daar vervolgens de posities van de middelste drie letters (Y, B, E) bij op.</p>
     
     <input type="text" id="p3-input" placeholder="Voer de berekende hash in...">
     <button onclick="checkPuzzel3()">Hash Verifiëren</button>
 
-    <div id="p3-fout" class="code-reveal fout-hint">❌ <b>HASH CORRUPT (-60s):</b> Onjuiste checksum. Rekenvoorbeeld: C=3, R=18. (3 * 18) + (Y + B + E). Reken zelf uit!</div>
+    <div id="p3-fout" class="fout-hint">❌ <b>HASH CORRUPT (-60s):</b> Onjuiste checksum. Rekenvoorbeeld: C=3, R=18. Formule: (3 * 18) + (Y + B + E). Tel zorgvuldig!</div>
     <div id="p3-goed" class="code-reveal">
         <b>[SUCCESS]</b> Hash-checksum geverifieerd.<br>
         🔑 <b>Derde Code-Fragment: 9</b>
@@ -175,7 +179,7 @@
     <input type="text" id="p4-input" placeholder="Voer het missende token-nummer in...">
     <button onclick="checkPuzzel4()">Analyseer Reeks</button>
 
-    <div id="p4-fout" class="code-reveal fout-hint">❌ <b>TOKEN INVALID (-60s):</b> Dit nummer past niet binnen deze bekende wiskundige reeks. Tel de vorige twee tokens bij elkaar op!</div>
+    <div id="p4-fout" class="fout-hint">❌ <b>TOKEN INVALID (-60s):</b> Dit nummer past niet. Logica: Tel telkens de vorige twee tokens bij elkaar op om de volgende te krijgen.</div>
     <div id="p4-goed" class="code-reveal">
         <b>[SUCCESS]</b> Patroon herkend.<br>
         🔑 <b>Vierde Code-Fragment: 4</b>
@@ -191,14 +195,24 @@
 </div>
 
 <script>
-// Straf-functie: Haalt 60 seconden van de timer af bij een fout
+// Straf-functie die direct synchroniseert met script.js
 function pasTijdStrafToe() {
-    let huidigeTijd = parseInt(localStorage.getItem("escape_timer")) || 3600;
-    huidigeTijd = Math.max(0, huidigeTijd - 60); // Haal 60 seconden af, mag niet onder 0
+    let huidigeTijd = parseInt(localStorage.getItem("escape_timer")) || 1800;
+    huidigeTijd = Math.max(0, huidigeTijd - 60); 
     localStorage.setItem("escape_timer", huidigeTijd);
+    
+    let minuten = Math.floor(huidigeTijd / 60);
+    let seconden = huidigeTijd % 60;
+    if (seconden < 10) seconden = "0" + seconden;
+    if (minuten < 10) minuten = "0" + minuten;
+    
+    let timerElement = document.getElementById("timer-display");
+    if (timerElement) {
+        timerElement.innerText = "⏱️ Tijd over: " + minuten + ":" + seconden;
+    }
 }
 
-// Puzzel 1: Live Validator (Lengte 16, 3 hoofdletters, begint met even getal, eindigt op #)
+// Puzzel 1: Live Validator
 function valideerWachtwoord() {
     let pass = document.getElementById("password-tester").value;
     
@@ -209,13 +223,10 @@ function valideerWachtwoord() {
 
     document.getElementById("req-lengte").className = l ? "status-item valid" : "status-item";
     document.getElementById("req-lengte").innerText = l ? "✅ Moet EXACT 16 tekens lang zijn" : "❌ Moet EXACT 16 tekens lang zijn";
-    
     document.getElementById("req-hoofd").className = h ? "status-item valid" : "status-item";
     document.getElementById("req-hoofd").innerText = h ? "✅ Bevat minimaal DRIE hoofdletters" : "❌ Bevat minimaal DRIE hoofdletters";
-    
     document.getElementById("req-cijfer").className = c ? "status-item valid" : "status-item";
     document.getElementById("req-cijfer").innerText = c ? "✅ Moet beginnen met een EVEN cijfer (0,2,4,6,8)" : "❌ Moet beginnen met een EVEN cijfer (0,2,4,6,8)";
-    
     document.getElementById("req-speciaal").className = s ? "status-item valid" : "status-item";
     document.getElementById("req-speciaal").innerText = s ? "✅ Moet eindigen op een hashtag (#)" : "❌ Moet eindigen op een hashtag (#)";
 
@@ -226,7 +237,7 @@ function valideerWachtwoord() {
     }
 }
 
-// Puzzel 2: Leet-speak check (phishing)
+// Puzzel 2: Leet-speak check
 function checkPuzzel2() {
     let input = document.getElementById("p2-input").value.trim().toLowerCase();
     if (input === "phishing") {
@@ -239,7 +250,7 @@ function checkPuzzel2() {
     }
 }
 
-// Puzzel 3: Hash-som check (C=3 * R=18 = 54) + (Y=25 + B=2 + E=5 = 32) -> 54 + 32 = 86
+// Puzzel 3: Hash-som check
 function checkPuzzel3() {
     let input = document.getElementById("p3-input").value.trim();
     if (input === "86") {
@@ -252,7 +263,7 @@ function checkPuzzel3() {
     }
 }
 
-// Puzzel 4: Fibonacci check (13)
+// Puzzel 4: Fibonacci check
 function checkPuzzel4() {
     let input = document.getElementById("p4-input").value.trim();
     if (input === "13") {
@@ -265,11 +276,11 @@ function checkPuzzel4() {
     }
 }
 
-// Eindcode check met straf-integratie
+// Eindcode check
 function checkCodeEnStraf() {
     let code = document.getElementById("code").value.trim();
     if (code === "7294") {
-        checkCode(); // Vuurt de functie af in script.js
+        checkCode(); 
     } else {
         pasTijdStrafToe();
         alert("🚨 TOEGANG GEWEIGERD! Systeembeveiliging aangescherpt. Er is 1 minuut van de tijd afgetrokken.");

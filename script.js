@@ -1,14 +1,13 @@
 // ==========================================================================
-// UNIVERSELE ESCAPE ROOM TIMER
+// UNIVERSELE ESCAPE ROOM TIMER (30 MINUTEN MAX)
 // ==========================================================================
 document.addEventListener("DOMContentLoaded", function() {
-    // Haal de opgeslagen tijd op uit het geheugen
     let opgeslagenTijd = localStorage.getItem("escape_timer");
     let resterendeTijd;
 
-    // Als er geen geldige tijd is opgeslagen, start dan op 60 minuten (3600 seconden)
+    // Start nu standaard op 30 minuten (30 * 60 = 1800 seconden)
     if (!opgeslagenTijd || isNaN(parseInt(opgeslagenTijd))) {
-        resterendeTijd = 60 * 60; 
+        resterendeTijd = 30 * 60; 
         localStorage.setItem("escape_timer", resterendeTijd);
     } else {
         resterendeTijd = parseInt(opgeslagenTijd);
@@ -16,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Update de timer elke seconde
     let timerInterval = setInterval(function() {
+        // Haal telkens de actuele tijd op (zodat strafminuten uit html-bestanden direct worden ingeladen!)
+        resterendeTijd = parseInt(localStorage.getItem("escape_timer")) || 0;
+
         if (resterendeTijd > 0) {
             resterendeTijd--;
             localStorage.setItem("escape_timer", resterendeTijd);
@@ -23,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
             let minuten = Math.floor(resterendeTijd / 60);
             let seconden = resterendeTijd % 60;
             
-            // Zorg voor nette weergave (bijv. 05 in plaats van 5)
             if (seconden < 10) seconden = "0" + seconden;
             if (minuten < 10) minuten = "0" + minuten;
 
@@ -43,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function() {
 // ==========================================================================
 // CENTRALIZED ESCAPE ROOM LOGICA
 // ==========================================================================
-
 function toonHint(id, isFout) {
     let element = document.getElementById(id);
     if (!element) return;
@@ -59,7 +59,6 @@ function toonHint(id, isFout) {
 
 function checkCode() {
     let code = document.getElementById("code").value.trim();
-
     if (code === "7294") {
         alert("🔓 Systeem hersteld! Toegang tot de serverruimte verleend. Je gaat nu naar Kamer 2.");
         window.location.href = "kamer2.html";
@@ -70,7 +69,6 @@ function checkCode() {
 
 function checkCode2() {
     let code = document.getElementById("code").value.trim();
-
     if (code === "516") {
         alert("🔓 DECRYPTIE SUCCESVOL! Alle bestanden zijn leesbaar. Je gaat nu naar Kamer 3.");
         window.location.href = "kamer3.html";
@@ -81,13 +79,11 @@ function checkCode2() {
 
 function checkCode3() {
     let code = document.getElementById("code").value.trim();
-
     if (code === "4182") {
         let eindcode = prompt("🔴 CRUCIALE CODE VEREIST!\nVoer de master-override sleutel in om het virus definitief te vernietigen (Hint: Combineer de eerste cijfers van alle kamers: 7, 5, 4):");
-
         if (eindcode === "754") {
             alert("🎉 GEFELICITEERD! Het virus is volledig gewist en de school-firewall is weer online. Jullie hebben de missie voltooid!");
-            localStorage.removeItem("escape_timer"); // Wis de timer bij winst
+            localStorage.removeItem("escape_timer"); 
             window.location.href = "gewonnen.html"; 
         } else {
             alert("🚨 CORRUPTIE: Het virus weert de override af. Verkeerde master-override code.");
