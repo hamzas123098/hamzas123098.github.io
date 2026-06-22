@@ -46,25 +46,6 @@
             font-weight: bold;
             margin: 15px 0;
         }
-        ul.keuze-lijst {
-            list-style-type: none;
-            padding: 0;
-        }
-        ul.keuze-lijst li {
-            background: #1e293b;
-            border: 1px solid #334155;
-            padding: 12px 20px;
-            margin: 8px 0;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: 0.2s;
-            font-weight: bold;
-        }
-        ul.keuze-lijst li:hover {
-            background: #a855f7;
-            color: #fff;
-            border-color: #a855f7;
-        }
         .code-reveal {
             display: none;
             background: #020617;
@@ -88,8 +69,9 @@
             padding: 10px;
             font-size: 18px;
             border-radius: 4px;
-            width: 240px;
+            width: 280px;
             text-align: center;
+            font-family: monospace;
         }
         button {
             background-color: #a855f7;
@@ -115,69 +97,61 @@
 </div>
 
 <h1>🔐 SYSTEM OVERRIDE: CRYPTOGRAFIE LAB</h1>
-<p style="color: #ef4444; font-weight: bold;">⚠️ PAS OP AGENT: Het mainframe registreert foute keuzes en onjuiste codes direct. Elke foute poging kost je DIRECT 1 minuut op de centrale timer!</p>
+<p style="color: #ef4444; font-weight: bold;">⚠️ PAS OP AGENT: Meerkeuzeknoppen zijn offline. Handmatige decryptie is vereist. Elke foute poging kost je DIRECT 1 minuut op de centrale timer!</p>
 
 <hr style="border-color: #1e293b;">
 
 <div class="puzzel-box">
     <h2>Puzzel 1: Caesar-verschuiving (Kort)</h2>
-    <p>Ontcijfer het volgende woord. De cryptografische sleutel is: <b>3 letters terug</b> ($C = P - 3$) in het alfabet.</p>
+    <p>Ontcijfer het volgende woord (typ in HOOFDLETTERS). De cryptografische sleutel is: <b>3 letters terug</b> in het alfabet.</p>
     
     <div class="cipher-box">K H O O R</div>
     
-    <ul class="keuze-lijst">
-        <li onclick="verwerkKeuze('p1', 'fout1')">PROEF</li>
-        <li onclick="verwerkKeuze('p1', 'goed')">HELLO</li>
-        <li onclick="verwerkKeuze('p1', 'fout2')">KREER</li>
-    </ul>
+    <input type="text" id="p1-input" placeholder="Typ gedecodeerde woord...">
+    <button onclick="checkPuzzel1()">Decrypten</button>
     
-    <div id="p1-fout1" class="fout-hint">❌ <b>DECRYPTION FAILED (-60s):</b> Onjuist. K min 3 stappen terug is de H. Probeer het alfabet nog eens terug te tellen!</div>
-    <div id="p1-fout2" class="fout-hint">❌ <b>DECRYPTION FAILED (-60s):</b> Bijna, maar kijk goed naar de dubbele 'O'. O min 3 stappen is de L.</div>
+    <div id="p1-fout" class="fout-hint">❌ <b>DECRYPTION FAILED (-60s):</b> Onjuist woord. Denk aan de verschuiving: K min 3 stappen terug...</div>
     <div id="p1-goed" class="code-reveal">
-        <b>[SUCCESS]</b> KHOOR wordt HELLO. <br>
+        <b>[SUCCESS]</b> Matrix gekraakt.<br>
         🔑 <b>Eerste Code-Fragment: 5</b>
     </div>
 </div>
 
 <div class="puzzel-box">
     <h2>Puzzel 2: Morsecode</h2>
-    <p>De computer geeft een pulssignaal af in morsecode. Wat probeert de server te zeggen?</p>
+    <p>De computer geeft een pulssignaal af in morsecode. Vertaal dit signaal (typ in HOOFDLETTERS):</p>
     
     <div class="cipher-box" style="color: #38bdf8;">.... . .-.. .--.</div>
     
-    <ul class="keuze-lijst">
-        <li onclick="verwerkKeuze('p2', 'fout')">OPEN</li>
-        <li onclick="verwerkKeuze('p2', 'goed')">HELP</li>
-    </ul>
+    <input type="text" id="p2-input" placeholder="Typ de vertaling...">
+    <button onclick="checkPuzzel2()">Signaal Analyseren</button>
     
-    <div id="p2-fout" class="fout-hint">❌ <b>SIGNAL INTERRUPTED (-60s):</b> Helaas, de code staat niet voor OPEN. Vier stippen (....) is de letter H.</div>
+    <div id="p2-fout" class="fout-hint">❌ <b>SIGNAL INTERRUPTED (-60s):</b> Verkeerd woord gedetecteerd. Tip: Vertaal teken voor teken. Vier stippen (....) is de H.</div>
     <div id="p2-goed" class="code-reveal">
-        <b>[SUCCESS]</b> Dit is de universele morsecode voor HELP.<br>
+        <b>[SUCCESS]</b> Noodsignaal geïnterpreteerd.<br>
         🔑 <b>Tweede Code-Fragment: 1</b>
     </div>
 </div>
 
 <div class="puzzel-box">
     <h2>Puzzel 3: De Klassieke Code</h2>
-    <p>Nog een onderschept bericht in Caesar-versleuteling (wederom 3 letters terugschuiven):</p>
+    <p>Nog een onderschept bericht in Caesar-versleuteling (wederom 3 letters terugschuiven, typ in HOOFDLETTERS):</p>
     
     <div class="cipher-box">Z H O F R P H</div>
     
-    <ul class="keuze-lijst">
-        <li onclick="verwerkKeuze('p3', 'goed')">WELCOME</li>
-        <li onclick="verwerkKeuze('p3', 'fout')">WEBSITE</li>
-    </ul>
+    <input type="text" id="p3-input" placeholder="Typ de begroeting...">
+    <button onclick="checkPuzzel3()">Systeemkraak</button>
     
-    <div id="p3-fout" class="fout-hint">❌ <b>DECRYPTION FAILED (-60s):</b> Onjuist. Z-3=W, H-3=E. Het begint met WE, maar daarna volgt O-3=L. Probeer opnieuw.</div>
+    <div id="p3-fout" class="fout-hint">❌ <b>DECRYPTION FAILED (-60s):</b> Toegang geweigerd. Berekening klopt niet. Z min 3 stappen terug is de W...</div>
     <div id="p3-goed" class="code-reveal">
-        <b>[SUCCESS]</b> Uitstekend ontcijferd! Z->W, H->E, O->L, F->C, R->O, P->M, H->E.<br>
+        <b>[SUCCESS]</b> Systeemtaal gedecodeerd.<br>
         🔑 <b>Derde Code-Fragment: 6</b>
     </div>
 </div>
 
 <div class="puzzel-box" style="border: 2px solid #a855f7;">
     <h2>Systeem Toegangscode</h2>
-    <p>Voer de 3 samengevoegde Code-Fragmenten in om het Cryptografie Lab te deblokkeren:</p>
+    <p>Voer de 3 samengevoegde Code-Fragmenten in om het Cryptografie Lab definitief te verlaten:</p>
     
     <input type="text" id="code" placeholder="3-cijferige code">
     <button onclick="checkCodeKamer2()">MAINFRAME UNLOCK</button>
@@ -188,7 +162,7 @@
 function pasTijdStrafToe() {
     let huidigeTijd = parseInt(localStorage.getItem("escape_timer")) || 1800;
     huidigeTijd = Math.max(0, huidigeTijd - 60); 
-    localStorage.setItem("escape_timer", currentTijd = huidigeTijd);
+    localStorage.setItem("escape_timer", huidigeTijd);
     
     let minuten = Math.floor(huidigeTijd / 60);
     let seconden = huidigeTijd % 60;
@@ -201,42 +175,42 @@ function pasTijdStrafToe() {
     }
 }
 
-// Generieke verwerker voor de klik-elementen
-function verwerkKeuze(puzzelId, status) {
-    // Verberg eerst alle hints voor deze specifieke puzzel
-    if (puzzelId === 'p1') {
-        document.getElementById("p1-fout1").style.display = "none";
-        document.getElementById("p1-fout2").style.display = "none";
+// Puzzel 1 Check
+function checkPuzzel1() {
+    let input = document.getElementById("p1-input").value.trim().toUpperCase();
+    if (input === "HELLO") {
+        document.getElementById("p1-goed").style.display = "block";
+        document.getElementById("p1-fout").style.display = "none";
+    } else {
+        pasTijdStrafToe();
+        document.getElementById("p1-fout").style.display = "block";
         document.getElementById("p1-goed").style.display = "none";
-        
-        if (status === 'goed') {
-            document.getElementById("p1-goed").style.display = "block";
-        } else {
-            pasTijdStrafToe();
-            document.getElementById("p1-" + status).style.display = "block";
-        }
-    } 
-    else if (puzzelId === 'p2') {
+    }
+}
+
+// Puzzel 2 Check
+function checkPuzzel2() {
+    let input = document.getElementById("p2-input").value.trim().toUpperCase();
+    if (input === "HELP") {
+        document.getElementById("p2-goed").style.display = "block";
         document.getElementById("p2-fout").style.display = "none";
+    } else {
+        pasTijdStrafToe();
+        document.getElementById("p2-fout").style.display = "block";
         document.getElementById("p2-goed").style.display = "none";
-        
-        if (status === 'goed') {
-            document.getElementById("p2-goed").style.display = "block";
-        } else {
-            pasTijdStrafToe();
-            document.getElementById("p2-fout").style.display = "block";
-        }
-    } 
-    else if (puzzelId === 'p3') {
+    }
+}
+
+// Puzzel 3 Check
+function checkPuzzel3() {
+    let input = document.getElementById("p3-input").value.trim().toUpperCase();
+    if (input === "WELCOME") {
+        document.getElementById("p3-goed").style.display = "block";
         document.getElementById("p3-fout").style.display = "none";
+    } else {
+        pasTijdStrafToe();
+        document.getElementById("p3-fout").style.display = "block";
         document.getElementById("p3-goed").style.display = "none";
-        
-        if (status === 'goed') {
-            document.getElementById("p3-goed").style.display = "block";
-        } else {
-            pasTijdStrafToe();
-            document.getElementById("p3-fout").style.display = "block";
-        }
     }
 }
 
@@ -244,16 +218,15 @@ function verwerkKeuze(puzzelId, status) {
 function checkCodeKamer2() {
     let codeInput = document.getElementById("code").value.trim();
     if (codeInput === "516") {
-        alert("🔓 TOEGANG VERLEEND! Het Cryptografie Lab is succesvol gekraakt.");
-        // Indien je een specifieke doorstuurfunctie in script.js hebt staan (bijv. naar kamer3.html):
+        alert("🔓 MAINFRAME GEKRAAKT! Je hebt Kamer 2 succesvol voltooid.");
         if (typeof checkCode === "function") {
             checkCode(); 
         } else {
-            window.location.href = "kamer3.html"; // Handmatige fallback naar de volgende kamer
+            window.location.href = "kamer3.html"; 
         }
     } else {
         pasTijdStrafToe();
-        alert("🚨 CORRUPTIE GEDETECTEERD! Ongeldige herstelcode ingevoerd. Er is 1 minuut straftijd toegepast.");
+        alert("🚨 TOEGANG GEWEIGERD! Ongeldige herstelcode. Er is 1 minuut straftijd toegepast.");
     }
 }
 </script>
