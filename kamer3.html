@@ -1,67 +1,85 @@
-// ==========================================================================
-// CENTRALIZED ESCAPE ROOM JAVASCRIPT
-// ==========================================================================
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamer 3 - Phishing & Social Engineering</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-// Universele functie om hints te tonen en te verbergen binnen een puzzel-box
-function toonHint(id, isFout) {
-    let element = document.getElementById(id);
-    if (!element) return;
-    
-    // Zoek de ouder-div (de puzzel-box) van het geklikte element
-    let box = element.parentElement;
-    
-    // Verberg eerst alle hints binnen deze specifieke puzzel-box
-    let hints = box.getElementsByClassName('hint');
-    for (let i = 0; i < hints.length; i++) {
-        hints[i].style.display = 'none';
-    }
-    
-    // Toon de geselecteerde hint
-    element.style.display = 'block';
-}
+<div class="room3-box">
 
-// ==========================================================================
-// KAMER DEUR CONTROLES
-// ==========================================================================
+    <h1 class="room3-title">🎣 Kamer 3: Phishing & Social Engineering</h1>
+    <p>Pas op, agent! Je inbox overstroomt met verdachte berichten. Hackers proberen je inloggegevens te stelen via misleiding. Analyseer de dreigingen om de malware-filter te activeren.</p>
 
-// KAMER 1: Wachtwoordveiligheid (Naar Kamer 2)
-function checkCode() {
-    let code = document.getElementById("code").value.trim();
+    <hr>
 
-    if (code === "7294") {
-        alert("🔓 Systeem hersteld! Toegang tot de serverruimte verleend. Je gaat nu naar Kamer 2.");
-        window.location.href = "kamer2.html";
-    } else {
-        alert("🚨 TOEGANG GEWEIGERD: De ingevoerde cryptografische sleutel is incorrect. Probeer het opnieuw.");
-    }
-}
+    <div class="puzzel-box">
+        <h2>Puzzel 1: De URL Check</h2>
+        <p>Je ontvangt een SMS (smishing) die van je bank lijkt te komen. Welke van de onderstaande links is de <b>echte, veilige website</b> van de bank?</p>
+        <ul>
+            <li onclick="toonHint('p1-fout1', true)">https://www.rabobank.nl.veilig-inloggen.com/herstel</li>
+            <li onclick="toonHint('p1-fout2', true)">https://www.rab0bank.nl/login</li>
+            <li onclick="toonHint('p1-goed', false)">https://www.rabobank.nl/particulieren</li>
+            <li onclick="toonHint('p1-fout3', true)">http://www.rabobank-beveiliging.nl/updates</li>
+        </ul>
+        <div id="p1-fout1" class="hint fout-hint">Trapt er niet in! Het hoofd-domein van deze site is 'veilig-inloggen.com'.</div>
+        <div id="p1-fout2" class="hint fout-hint">Kijk heel goed naar de spelling! Er staat een nul (0) in plaats van de letter 'o'.</div>
+        <div id="p1-fout3" class="hint fout-hint">Gevaarlijk. Deze link gebruikt 'http' en 'rabobank-beveiliging.nl' is nep.</div>
+        <div id="p1-goed" class="hint"><b>Scherp gezien!</b> Dit is het officiële domein met HTTPS. <br>🔑 <b>Noteer het eerste cijfer: 4</b></div>
+    </div>
 
-// KAMER 2: Cryptografie Lab (Naar Kamer 3)
-function checkCode2() {
-    let code = document.getElementById("code").value.trim();
+    <div class="puzzel-box">
+        <h2>Puzzel 2: Social Engineering Tactieken</h2>
+        <p>Bekijk de onderstaande e-mail. Welke manipulatietechniek wordt hier voornamelijk gebruikt?</p>
+        
+        <div class="email-preview">
+            <div class="email-header">Van: account-security@netflix-update.com<br>Onderwerp: Systeemwaarschuwing: Account wordt GEBLOKKEERD!</div>
+            Beste klant, vul uw gegevens <b>binnen 2 uur</b> in, anders wordt uw account permanent verwijderd.
+        </div>
 
-    if (code === "516") {
-        alert("🔓 DECRYPTIE SUCCESVOL! Alle bestanden zijn leesbaar. Je gaat nu naar Kamer 3.");
-        window.location.href = "kamer3.html";
-    } else {
-        alert("🚨 CRYPTO CORRUPTIE: De ingevoerde sleutel komt niet overeen met de checksum. Probeer het opnieuw.");
-    }
-}
+        <ul>
+            <li onclick="toonHint('p2-goed', false)">Urgentie & Angst (Willekeurige tijdsdruk opvoeren)</li>
+            <li onclick="toonHint('p2-fout1', true)">Wederkerigheid (Jou iets gratis cadeau doen)</li>
+        </ul>
+        <div id="p2-fout1" class="hint fout-hint">Onjuist. Er wordt in deze mail niks gratis aangeboden.</div>
+        <div id="p2-goed" class="hint"><b>Correct!</b> Tijdsdruk zorgt ervoor dat je stopt met logisch nadenken. <br>🔑 <b>Noteer het tweede cijfer: 1</b></div>
+    </div>
 
-// KAMER 3: Phishing & Social Engineering (Naar de Overwinning!)
-function checkCode3() {
-    let code = document.getElementById("code").value.trim();
+    <div class="puzzel-box">
+        <h2>Puzzel 3: De Afzender Scannen</h2>
+        <p>Je krijgt een e-mail van school. Waar kijk je als eerste naar?</p>
+        <ul>
+            <li onclick="toonHint('p3-fout1', true)">De displaynaam (bijv. "Je School Administratie")</li>
+            <li onclick="toonHint('p3-goed', false)">Het daadwerkelijke e-mailadres achter de naam na de @</li>
+        </ul>
+        <div id="p3-fout1" class="hint fout-hint">Fout. Iedereen kan zijn weergavenaam handmatig aanpassen naar "Je School".</div>
+        <div id="p3-goed" class="hint"><b>Helemaal juist!</b> De domeinnaam achter de @ verraadt de hacker direct. <br>🔑 <b>Noteer het derde cijfer: 8</b></div>
+    </div>
 
-    if (code === "4182") {
-        let eindcode = prompt("🔴 CRUCIALE CODE VEREIST!\nVoer de master-override sleutel in om het virus definitief te vernietigen (Hint: Combineer de eerste cijfers van alle kamers: 7, 5, 4):");
+    <div class="puzzel-box">
+        <h2>Puzzel 4: De Gevaarlijke Bijlage</h2>
+        <p>Welk bestand is in werkelijkheid malware en geen afbeelding?</p>
+        <ul>
+            <li onclick="toonHint('p4-fout1', true)">klassenfeest_fotos.jpg</li>
+            <li onclick="toonHint('p4-goed', false)">leuke_fotos.jpg.exe</li>
+        </ul>
+        <div id="p4-fout1" class="hint fout-hint">Nee, .jpg is een normale, veilige afbeelding.</div>
+        <div id="p4-goed" class="hint"><b>Trap er niet in!</b> Het eindigt op `.exe`, dus het start een programma dat je pc infecteert! <br>🔑 <b>Noteer het vierde cijfer: 2</b></div>
+    </div>
 
-        if (eindcode === "754") {
-            alert("🎉 GEFELICITEERD! Het virus is volledig gewist en de school-firewall is weer online. Jullie hebben de missie voltooid!");
-            window.location.href = "gewonnen.html"; 
-        } else {
-            alert("🚨 CORRUPTIE: Het virus weert de override af. Verkeerde master-override code.");
-        }
-    } else {
-        alert("🚨 FILTER MISLUKT: De anti-phishing code is incorrect.");
-    }
-}
+    <div class="puzzel-box" style="border: 2px solid #eab308;">
+        <h2>Het Anti-Phishing Filter Activeren</h2>
+        <p>Voer de 4-cijferige storingscode in om de kwaadaardige e-mails te blokkeren:</p>
+        
+        <input type="text" id="code" placeholder="4-cijferige code">
+        <button class="btn-room3" onclick="checkCode3()">Activeer Filter</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
