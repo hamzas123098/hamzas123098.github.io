@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Kamer 1 - Wachtwoord Beveiliging (Hardcore Mode)</title>
+    <title>Kamer 1 - Wachtwoord Beveiliging (Ultra Hardcore Mode)</title>
     <style>
         body {
             background-color: #020617;
@@ -72,7 +72,7 @@
             padding: 10px;
             font-size: 18px;
             border-radius: 4px;
-            width: 200px;
+            width: 240px;
             text-align: center;
         }
         button {
@@ -110,8 +110,8 @@
     ⏱️ Tijd over: 60:00
 </div>
 
-<h1>☣️ SYSTEM OVERRIDE: KAMER 1</h1>
-<p>De mainframe heeft een brute-force detectiesysteem geactiveerd. Hacken via simpele knoppen is geblokkeerd. Je moet cryptografische decrypties handmatig uitvoeren om de codes te genereren.</p>
+<h1>☣️ SYSTEM OVERRIDE: SECURITY LEVEL MAX</h1>
+<p style="color: #ef4444; font-weight: bold;">⚠️ PAS OP AGENT: Elke foute code-verificatie activeert een verdedigingsmechanisme waardoor er DIRECT 1 minuut van de timer afgaat!</p>
 
 <hr style="border-color: #1e293b;">
 
@@ -122,141 +122,11 @@
     <input type="text" id="password-tester" class="crypto-input" placeholder="Matrix code invoeren..." oninput="valideerWachtwoord()">
     
     <ul class="status-list">
-        <li id="req-lengte" class="status-item">❌ Moet EXACT 14 tekens lang zijn</li>
-        <li id="req-hoofd" class="status-item">❌ Bevat minimaal TWEE hoofdletters</li>
-        <li id="req-cijfer" class="status-item">❌ Moet beginnen met een cijfer (0-9)</li>
-        <li id="req-speciaal" class="status-item">❌ Moet eindigen op een uitroepleken (!)</li>
+        <li id="req-lengte" class="status-item">❌ Moet EXACT 16 tekens lang zijn</li>
+        <li id="req-hoofd" class="status-item">❌ Bevat minimaal DRIE hoofdletters</li>
+        <li id="req-cijfer" class="status-item">❌ Moet beginnen met een EVEN cijfer (0, 2, 4, 6, 8)</li>
+        <li id="req-speciaal" class="status-item">❌ Moet eindigen op een hashtag (#)</li>
     </ul>
 
     <div id="p1-succes" class="code-reveal">
-        <b>[SUCCESS]</b> Barrière 1 omzeild. <br>
-        🔑 <b>Eerste Code-Fragment: 7</b>
-    </div>
-</div>
-
-<div class="puzzel-box">
-    <h2>Puzzel 2: Leet-Speak Decryptie</h2>
-    <p>Hackers verbergen vaak gegevens door letters te vervangen door cijfers die erop lijken. Ontcijfer het onderstaande datablok en typ het daadwerkelijke Engelse woord (in kleine letters) in:</p>
-    
-    <div class="cipher-box">5 3 C U R 1 7 Y</div>
-    
-    <input type="text" id="p2-input" placeholder="Typ het ontcijferde woord...">
-    <button onclick="checkPuzzel2()">Decodeer</button>
-
-    <div id="p2-fout" class="code-reveal fout-hint">❌ <b>DECRYPTION FAILED:</b> Sleutel komt niet overeen. Kijk goed naar de cijfers: 5=S, 3=E, 1=I, 7=T...</div>
-    <div id="p2-goed" class="code-reveal">
-        <b>[SUCCESS]</b> Data leesbaar gemaakt.<br>
-        🔑 <b>Tweede Code-Fragment: 2</b>
-    </div>
-</div>
-
-<div class="puzzel-box">
-    <h2>Puzzel 3: De Wachtwoord Hash-Som</h2>
-    <p>Een wachtwoord wordt via een algoritme omgezet in een getal (hash). Bereken de hash-waarde van het woord <b>"BAD"</b>.</p>
-    <p><b>Het Algoritme:</b> Tel de alfabet-posities van de letters bij elkaar op ($A = 1, B = 2, C = 3, D = 4$, enzovoort) en vermenigvuldig de uitkomst met 3.</p>
-    
-    <input type="text" id="p3-input" placeholder="Voer de berekende hash in...">
-    <button onclick="checkPuzzel3()">Hash Verifiëren</button>
-
-    <div id="p3-fout" class="code-reveal fout-hint">❌ <b>HASH CORRUPT:</b> Onjuiste uitkomst. Berekening: B(2) + A(1) + D(4) = 7. Vermenigvuldig dat getal met 3!</div>
-    <div id="p3-goed" class="code-reveal">
-        <b>[SUCCESS]</b> Hash-checksum geverifieerd.<br>
-        🔑 <b>Derde Code-Fragment: 9</b>
-    </div>
-</div>
-
-<div class="puzzel-box">
-    <h2>Puzzel 4: De Logische Sequentie</h2>
-    <p>Kraak de ontbrekende logische code-stap in de beveiligingsreeks:</p>
-    <div class="cipher-box" style="font-size: 16px; color: #38bdf8;">
-        1FA (Wachtwoord) ➡️ 2FA (SMS) ➡️ 3FA (Biometrie) ➡️ ?FA (Locatiecontrole)
-    </div>
-    
-    <input type="text" id="p4-input" placeholder="Welk cijfer moet op de plek van het vraagteken?">
-    <button onclick="checkPuzzel4()">Analyseer Reeks</button>
-
-    <div id="p4-fout" class="code-reveal fout-hint">❌ <b>SEQUENTIE FOUT:</b> Dit getal volgt de logische reeks (1, 2, 3...) niet op.</div>
-    <div id="p4-goed" class="code-reveal">
-        <b>[SUCCESS]</b> Patroon herkend.<br>
-        🔑 <b>Vierde Code-Fragment: 4</b>
-    </div>
-</div>
-
-<div class="puzzel-box" style="border: 2px solid #38bdf8;">
-    <h2>Systeem Toegangscode</h2>
-    <p>Voer de 4 samengevoegde Code-Fragmenten in om Kamer 1 definitief te verlaten:</p>
-    
-    <input type="text" id="code" placeholder="4-cijferige code">
-    <button onclick="checkCode()">SYSTEM OVERRIDE</button>
-</div>
-
-<script>
-// Puzzel 1: Hardcore Live Validator
-function valideerWachtwoord() {
-    let pass = document.getElementById("password-tester").value;
-    
-    let l = pass.length === 14; 
-    let h = (pass.match(/[A-Z]/g) || []).length >= 2; 
-    let c = /^[0-9]/.test(pass); 
-    let s = pass.endsWith("!"); 
-
-    document.getElementById("req-lengte").className = l ? "status-item valid" : "status-item";
-    document.getElementById("req-lengte").innerText = l ? "✅ Moet EXACT 14 tekens lang zijn" : "❌ Moet EXACT 14 tekens lang zijn";
-    
-    document.getElementById("req-hoofd").className = h ? "status-item valid" : "status-item";
-    document.getElementById("req-hoofd").innerText = h ? "✅ Bevat minimaal TWEE hoofdletters" : "❌ Bevat minimaal TWEE hoofdletters";
-    
-    document.getElementById("req-cijfer").className = c ? "status-item valid" : "status-item";
-    document.getElementById("req-cijfer").innerText = c ? "✅ Moet beginnen met een cijfer (0-9)" : "❌ Moet beginnen met een cijfer (0-9)";
-    
-    document.getElementById("req-speciaal").className = s ? "status-item valid" : "status-item";
-    document.getElementById("req-speciaal").innerText = s ? "✅ Moet eindigen op een uitroepteken (!)" : "❌ Moet eindigen op een uitroepteken (!)";
-
-    if (l && h && c && s) {
-        document.getElementById("p1-succes").style.display = "block";
-    } else {
-        document.getElementById("p1-succes").style.display = "none";
-    }
-}
-
-// Puzzel 2: Leet-speak check (security)
-function checkPuzzel2() {
-    let input = document.getElementById("p2-input").value.trim().toLowerCase();
-    if (input === "security") {
-        document.getElementById("p2-goed").style.display = "block";
-        document.getElementById("p2-fout").style.display = "none";
-    } else {
-        document.getElementById("p2-fout").style.display = "block";
-        document.getElementById("p2-goed").style.display = "none";
-    }
-}
-
-// Puzzel 3: Hash-som check (21)
-function checkPuzzel3() {
-    let input = document.getElementById("p3-input").value.trim();
-    if (input === "21") {
-        document.getElementById("p3-goed").style.display = "block";
-        document.getElementById("p3-fout").style.display = "none";
-    } else {
-        document.getElementById("p3-fout").style.display = "block";
-        document.getElementById("p3-goed").style.display = "none";
-    }
-}
-
-// Puzzel 4: Reeks check (4)
-function checkPuzzel4() {
-    let input = document.getElementById("p4-input").value.trim();
-    if (input === "4") {
-        document.getElementById("p4-goed").style.display = "block";
-        document.getElementById("p4-fout").style.display = "none";
-    } else {
-        document.getElementById("p4-fout").style.display = "block";
-        document.getElementById("p4-goed").style.display = "none";
-    }
-}
-</script>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+        <b>[SUCCESS]</b> Barrière 1 om
