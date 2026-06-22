@@ -40,7 +40,8 @@ function checkCode() {
 function checkCode2() {
     let code = document.getElementById("code").value.trim();
 
-    if (code === "5388") {
+    // Gecorrigeerd naar 516 op basis van jouw puzzels (HELLO = 5, HELP = 1, WELCOME = 6)
+    if (code === "516") {
         alert("🔓 DECRYPTIE SUCCESVOL! Alle bestanden zijn leesbaar. Je gaat nu naar Kamer 3.");
         window.location.href = "kamer3.html";
     } else {
@@ -53,12 +54,11 @@ function checkCode3() {
     let code = document.getElementById("code").value.trim();
 
     if (code === "4182") {
-        // We verplaatsen de prompt-logica naar een strakke finale check
         let eindcode = prompt("🔴 CRUCIALE CODE VEREIST!\nVoer de master-override sleutel in om het virus definitief te vernietigen (Hint: Combineer de eerste cijfers van alle kamers: 7, 5, 4):");
 
         if (eindcode === "754") {
             alert("🎉 GEFELICITEERD! Het virus is volledig gewist en de school-firewall is weer online. Jullie hebben de missie voltooid!");
-            window.location.href = "win.html"; // Zorg dat dit bestand (of gewonnen.html) bestaat!
+            window.location.href = "gewonnen.html"; // Veranderd naar gewonnen.html zodat dit direct klopt
         } else {
             alert("🚨 CORRUPTIE: Het virus weert de override af. Verkeerde master-override code.");
         }
