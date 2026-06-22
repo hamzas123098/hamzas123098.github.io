@@ -1,30 +1,17 @@
-// ==========================================================================
-// CENTRALIZED ESCAPE ROOM JAVASCRIPT
-// ==========================================================================
-
-// Universele functie om hints te tonen en te verbergen binnen een puzzel-box
 function toonHint(id, isFout) {
     let element = document.getElementById(id);
     if (!element) return;
     
-    // Zoek de ouder-div (de puzzel-box) van het geklikte element
     let box = element.parentElement;
     
-    // Verberg eerst alle hints binnen deze specifieke puzzel-box
     let hints = box.getElementsByClassName('hint');
     for (let i = 0; i < hints.length; i++) {
         hints[i].style.display = 'none';
     }
     
-    // Toon de geselecteerde hint
     element.style.display = 'block';
 }
 
-// ==========================================================================
-// KAMER DEUR CONTROLES
-// ==========================================================================
-
-// KAMER 1: Wachtwoordveiligheid (Naar Kamer 2)
 function checkCode() {
     let code = document.getElementById("code").value.trim();
 
@@ -36,11 +23,9 @@ function checkCode() {
     }
 }
 
-// KAMER 2: Cryptografie Lab (Naar Kamer 3)
 function checkCode2() {
     let code = document.getElementById("code").value.trim();
 
-    // Gecorrigeerd naar 516 op basis van jouw puzzels (HELLO = 5, HELP = 1, WELCOME = 6)
     if (code === "516") {
         alert("🔓 DECRYPTIE SUCCESVOL! Alle bestanden zijn leesbaar. Je gaat nu naar Kamer 3.");
         window.location.href = "kamer3.html";
@@ -49,7 +34,6 @@ function checkCode2() {
     }
 }
 
-// KAMER 3: Phishing & Social Engineering (Naar de Overwinning!)
 function checkCode3() {
     let code = document.getElementById("code").value.trim();
 
@@ -58,7 +42,7 @@ function checkCode3() {
 
         if (eindcode === "754") {
             alert("🎉 GEFELICITEERD! Het virus is volledig gewist en de school-firewall is weer online. Jullie hebben de missie voltooid!");
-            window.location.href = "gewonnen.html"; // Veranderd naar gewonnen.html zodat dit direct klopt
+            window.location.href = "gewonnen.html"; 
         } else {
             alert("🚨 CORRUPTIE: Het virus weert de override af. Verkeerde master-override code.");
         }
