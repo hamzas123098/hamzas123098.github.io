@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let opgeslagenTijd = localStorage.getItem("escape_timer");
     let resterendeTijd;
 
-    // Start nu standaard op 30 minutes (30 * 60 = 1800 seconden)
+    // Start nu standaard op 30 minuten (30 * 60 = 1800 seconden)
     if (!opgeslagenTijd || isNaN(parseInt(opgeslagenTijd))) {
         resterendeTijd = 30 * 60; 
         localStorage.setItem("escape_timer", resterendeTijd);
@@ -60,6 +60,8 @@ function toonHint(id, isFout) {
 function checkCode() {
     let code = document.getElementById("code").value.trim();
     if (code === "7294") {
+        // Zet de anti-cheat stempel voor Kamer 2
+        localStorage.setItem("toegang_kamer2", "true");
         alert("🔓 Systeem hersteld! Toegang tot de serverruimte van Nexora Systems verleend. Je gaat nu naar Kamer 2.");
         window.location.href = "kamer2.html";
     } else {
@@ -70,10 +72,12 @@ function checkCode() {
 function checkCode2() {
     let code = document.getElementById("code").value.trim();
     if (code === "5136") { // Gecorrigeerd naar de nieuwe 4-cijferige code voor Kamer 2
+        // Zet de anti-cheat stempel voor Kamer 3
+        localStorage.setItem("toegang_kamer3", "true");
         alert("🔓 DECRYPTIE SUCCESVOL! Alle bestanden zijn leesbaar. Je gaat nu naar Kamer 3.");
         window.location.href = "kamer3.html";
     } else {
-        alert("🚨 CRYPTO CORRUPTIE: De ingevoerde sleutel komt nu niet overeen met de checksum. Probeer het opnieuw.");
+        alert("🚨 CRYPTO CORRUPTIE: De ingevoerde sleutel komt niet overeen met de checksum. Probeer het opnieuw.");
     }
 }
 
@@ -83,7 +87,11 @@ function checkCode3() {
         let eindcode = prompt("🔴 CRUCIALE CODE VEREIST!\nVoer de master-override sleutel in om het virus definitief te vernietigen (Hint: Combineer de eerste cijfers van alle kamers: 7, 5, 4):");
         if (eindcode === "754") {
             alert("🎉 GEFELICITEERD ONDERZOEKERS!\n\nHet anti-phishing filter is actief, de systemen van Nexora Systems starten op en de malware van Blackout is vernietigd! \n\nBij het herstarten van de server hebben jullie de insider ontmaskerd: de hoofd-systeembeheerder heeft de logs gewist en bleek de verrader te zijn! De autoriteiten zijn onderweg. Jullie hebben Project Blackout succesvol opgelost!");
+            
+            // Verwijder alle timers en anti-cheat stempels bij winst
             localStorage.removeItem("escape_timer"); 
+            localStorage.removeItem("toegang_kamer2");
+            localStorage.removeItem("toegang_kamer3");
             window.location.href = "gewonnen.html"; 
         } else {
             alert("🚨 CORRUPTIE: Het virus weert de override af. Verkeerde master-override code.");

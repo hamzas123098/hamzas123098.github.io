@@ -1,3 +1,9 @@
+// Anti-URL-manipulatie check
+if (localStorage.getItem("toegang_kamer2") !== "true") {
+    alert("🚨 DETECTIE: Je probeert illegaal Kamer 2 te betreden zonder Kamer 1 te klaren! Systeem reset...");
+    window.location.href = "index.html"; // Stuurt ze terug naar de intro
+}
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>

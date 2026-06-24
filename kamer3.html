@@ -1,3 +1,9 @@
+// Anti-URL-manipulatie check
+if (localStorage.getItem("toegang_kamer3") !== "true") {
+    alert("🚨 DETECTIE: Je hebt de decryptiesleutels van Kamer 2 niet ingelezen! Toegang geweigerd.");
+    window.location.href = "index.html"; // Stuurt ze terug naar de intro
+}
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
