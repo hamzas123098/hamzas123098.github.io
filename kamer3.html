@@ -1,15 +1,18 @@
-// Anti-URL-manipulatie check
-if (localStorage.getItem("toegang_kamer3") !== "true") {
-    alert("🚨 DETECTIE: Je hebt de decryptiesleutels van Kamer 2 niet ingelezen! Toegang geweigerd.");
-    window.location.href = "index.html"; // Stuurt ze terug naar de intro
-}
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kamer 3 - Phishing & Social Engineering (Ultra Hardcore Mode)</title>
+    
+    <script>
+        // Anti-URL-manipulatie check (Poortwachter)
+        if (localStorage.getItem("toegang_kamer3") !== "true") {
+            alert("🚨 DETECTIE: Je hebt de decryptiesleutels van Kamer 2 niet ingelezen! Toegang geweigerd.");
+            window.location.href = "index.html"; // Stuurt ze terug naar de intro
+        }
+    </script>
+
     <style>
         body {
             background-color: #020617;
@@ -159,7 +162,7 @@ if (localStorage.getItem("toegang_kamer3") !== "true") {
 </div>
 
 <div class="puzzel-box">
-    <h2>Puzzel 3: De E-mail Header Header Spoofing</h2>
+    <h2>Puzzel 3: De E-mail Header Spoofing</h2>
     <p>Je inspecteert de technische header van een verdachte mail. De 'From'-weergavenaam zegt "School Directie", maar de mailserver faalt voor de cryptografische afzender-authenticatie. Welke bekende drieletterige internet-beveiligingstechniek (afkorting) controleert of de verzendende IP-server daadwerkelijk namens het domein mag mailen?</p>
     
     <div class="cipher-box" style="color: #a855f7;">Header logs: Authentication-Results: mx.google.com; [AFKORTING]=fail header.from=school.nl</div>
@@ -185,7 +188,7 @@ if (localStorage.getItem("toegang_kamer3") !== "true") {
     
     <div id="p4-fout" class="fout-hint">❌ <b>SANDBOX BREACH (-60s):</b> Fout! Windows voert altijd de allerlaatste extensie aan het einde van de bestandsnaam uit. Kijk goed waar het bestand écht in eindigt.</div>
     <div id="p4-goed" class="code-reveal">
-        <b>[SUCCESS]</b> Aanval afgeslagen. Het bestand is een uitvoerbaar executable (.exe) bestand en géén PDF!<br>
+        <b>[SUCCESS]</b> Aanval afgeslagen. Het bestand is een uitvoerbaar executable (.exe) bestand und géén PDF!<br>
         🔑 <b>Vierde Code-Fragment: 2</b>
     </div>
 </div>
@@ -195,7 +198,7 @@ if (localStorage.getItem("toegang_kamer3") !== "true") {
     <p>Voer de 4 samengevoegde Code-Fragmenten in om de malware-filters te activeren en Kamer 3 te verlaten:</p>
     
     <input type="text" id="code" placeholder="4-cijferige code">
-    <button onclick="checkCodeKamer3()">ACTIVEER FILTER</button>
+    <button onclick="verifieerEindCodeKamer3()">ACTIVEER FILTER</button>
 </div>
 
 <script>
@@ -206,7 +209,7 @@ function pasTijdStrafToe() {
     localStorage.setItem("escape_timer", huidigeTijd);
     
     let minuten = Math.floor(huidigeTijd / 60);
-    let seconden = currentTijd = huidigeTijd % 60;
+    let seconden = huidigeTijd % 60;
     if (seconden < 10) seconden = "0" + seconden;
     if (minuten < 10) minuten = "0" + minuten;
     
@@ -268,15 +271,22 @@ function checkPuzzel4() {
     }
 }
 
-// Eindcode check voor Kamer 3
-function checkCodeKamer3() {
+// Volledig unieke functie in kamer3.html om script.js conflicten te omzeilen
+function verifieerEindCodeKamer3() {
     let codeInput = document.getElementById("code").value.trim();
     if (codeInput === "4182") {
-        alert("🔓 MALWARE-FILTER GEACTIVEERD! Je hebt alle phishing-dreigingen geneutraliseerd. Kamer 3 voltooid!");
-        if (typeof checkCode === "function") {
-            checkCode(); 
+        // We roepen de gecentraliseerde checkCode3 aan uit script.js voor de master-override prompt
+        if (typeof checkCode3 === "function") {
+            checkCode3();
+            
+            // Controleer na de prompts of de timer is opgeruimd (teken dat ze gewonnen hebben!)
+            if (!localStorage.getItem("escape_timer")) {
+                window.location.href = "gewonnen.html";
+            }
         } else {
-            alert("Gefeliciteerd! Je hebt het spel uitgespeeld.");
+            // Handmatige fallback mocht script.js onverhoopt niet laden
+            alert("🔓 MALWARE-FILTER GEACTIVEERD! Kamer 3 voltooid!");
+            window.location.href = "gewonnen.html";
         }
     } else {
         pasTijdStrafToe();
