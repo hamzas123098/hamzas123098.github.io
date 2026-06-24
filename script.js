@@ -84,7 +84,7 @@ function checkCode2() {
 function checkCode3() {
     let code = document.getElementById("code").value.trim();
     if (code === "4182") {
-        let eindcode = prompt("🔴 CRUCIALE CODE VEREIST!\nVoer de master-override sleutel in om het virus definitief te vernietigen (Hint: Combineer de eerste cijfers van alle kamers: 7, 5, 4):");
+        let eindcode = prompt("🔴 CRUCIALE CODE VEREIST!\nVoer de master-override sleutel in om het virus definitief te vernietigen (Hint: Combineer de eerste cijfers van alle kamers):");
         if (eindcode === "754") {
             alert("🎉 GEFELICITEERD ONDERZOEKERS!\n\nHet anti-phishing filter is actief, de systemen van Nexora Systems starten op en de malware van Blackout is vernietigd! \n\nBij het herstarten van de server hebben jullie de insider ontmaskerd: de hoofd-systeembeheerder heeft de logs gewist en bleek de verrader te zijn! De autoriteiten zijn onderweg. Jullie hebben Project Blackout succesvol opgelost!");
             
