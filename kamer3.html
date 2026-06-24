@@ -211,7 +211,7 @@ function pasTijdStrafToe() {
     let minuten = Math.floor(huidigeTijd / 60);
     let seconden = huidigeTijd % 60;
     if (seconden < 10) seconden = "0" + seconden;
-    if (minuten < 10) minutes = "0" + minuten;
+    if (minuten < 10) minuten = "0" + minuten;
     
     let timerElement = document.getElementById("timer-display");
     if (timerElement) {
@@ -271,23 +271,20 @@ function checkPuzzel4() {
     }
 }
 
-// Volledig unieke functie in kamer3.html om script.js conflicten te omzeilen
+// Volledig unieke functie in kamer3.html om direct naar gewonnen.html door te sturen
 function verifieerEindCodeKamer3() {
     let codeInput = document.getElementById("code").value.trim();
     if (codeInput === "4182") {
-        // We roepen de gecentraliseerde checkCode3 aan uit script.js voor de master-override prompt
+        // We roepen de gecentraliseerde checkCode3 aan uit script.js mocht die bestaan
         if (typeof checkCode3 === "function") {
             checkCode3();
-            
-            // Controleer na de prompts of de timer is opgeruimd (teken dat ze gewonnen hebben!)
-            if (!localStorage.getItem("escape_timer")) {
-                window.location.href = "gewonnen.html";
-            }
-        } else {
-            // Handmatige fallback mocht script.js onverhoopt niet laden
-            alert("🔓 MALWARE-FILTER GEACTIVEERD! Kamer 3 voltooid!");
-            window.location.href = "gewonnen.html";
         }
+        
+        // Sla op dat het spel gewonnen is en stuur direct door naar gewonnen.html
+        localStorage.setItem("escape_gewonnen", "true");
+        alert("🔓 MALWARE-FILTER GEACTIVEERD! Je hebt het mainframe gered!");
+        window.location.href = "gewonnen.html";
+        
     } else {
         pasTijdStrafToe();
         alert("🚨 FILTER GEWEIGERD! Ongeldige storingscode ingevoerd. Systeembeveiliging trekt 1 minuut van de klok af.");
