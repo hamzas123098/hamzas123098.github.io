@@ -3,86 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamer 3 - Phishing & Social Engineering</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Kamer 3 - Phishing & Social Engineering (Ultra Hardcore Mode)</title>
+    <style>
+        body {
+            background-color: #020617;
+            color: #94a3b8;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 40px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #eab308;
+            border-bottom: 2px dashed #eab308;
+            padding-bottom: 10px;
+            text-shadow: 0 0 10px rgba(234, 179, 8, 0.4);
+        }
+        h2 {
+            color: #f43f5e;
+            margin-top: 30px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .puzzel-box {
+            background-color: #0f172a;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #1e293b;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+        }
+        .cipher-box {
+            background: #020617;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #334155;
+            font-size: 16px;
+            color: #38bdf8;
+            text-align: center;
+            word-break: break-all;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .email-preview {
+            background: #090d16;
+            border: 1px solid #334155;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+        .email-header {
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+            color: #f43f5e;
+        }
+        .code-reveal {
+            display: none;
+            background: #020617;
+            padding: 15px;
+            border-left: 4px solid #22c55e;
+            margin-top: 15px;
+            color: #4ade80;
+        }
+        .fout-hint {
+            display: none;
+            background: #020617;
+            padding: 15px;
+            border-left: 4px solid #ef4444;
+            margin-top: 15px;
+            color: #fca5a5;
+        }
+        input[type="text"] {
+            background-color: #020617;
+            border: 2px solid #eab308;
+            color: #fff;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 4px;
+            width: 320px;
+            text-align: center;
+            font-family: monospace;
+        }
+        button {
+            background-color: #eab308;
+            color: #020617;
+            border: none;
+            padding: 11px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #22c55e;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
 
-<div class="room3-box">
-
-    <div id="timer-display" style="font-size: 24px; font-weight: bold; color: #f87171; background: #020617; padding: 10px; border: 2px solid #f87171; border-radius: 6px; display: inline-block; margin-bottom: 20px; font-family: monospace;">
-        ⏱️ Tijd over: 60:00
-    </div>
-
-    <h1 class="room3-title">🎣 Kamer 3: Phishing & Social Engineering</h1>
-    <p>Pas op, agent! Je inbox overstroomt met verdachte berichten. Hackers proberen je inloggegevens te stelen via misleiding. Analyseer de dreigingen om de malware-filter te activeren.</p>
-
-    <hr>
-
-    <div class="puzzel-box">
-        <h2>Puzzel 1: De URL Check</h2>
-        <p>Je ontvangt een SMS (smishing) die van je bank lijkt te komen. Welke van de onderstaande links is de <b>echte, veilige website</b> van de bank?</p>
-        <ul>
-            <li onclick="toonHint('p1-fout1', true)">https://www.rabobank.nl.veilig-inloggen.com/herstel</li>
-            <li onclick="toonHint('p1-fout2', true)">https://www.rab0bank.nl/login</li>
-            <li onclick="toonHint('p1-goed', false)">https://www.rabobank.nl/particulieren</li>
-            <li onclick="toonHint('p1-fout3', true)">http://www.rabobank-beveiliging.nl/updates</li>
-        </ul>
-        <div id="p1-fout1" class="hint fout-hint">Trapt er niet in! Het hoofd-domein van deze site is 'veilig-inloggen.com'.</div>
-        <div id="p1-fout2" class="hint fout-hint">Kijk heel goed naar de spelling! Er staat een nul (0) in plaats van de letter 'o'.</div>
-        <div id="p1-fout3" class="hint fout-hint">Gevaarlijk. Deze link gebruikt 'http' en 'rabobank-beveiliging.nl' is nep.</div>
-        <div id="p1-goed" class="hint"><b>Scherp gezien!</b> Dit is het officiële domein met HTTPS. <br>🔑 <b>Noteer het eerste cijfer: 4</b></div>
-    </div>
-
-    <div class="puzzel-box">
-        <h2>Puzzel 2: Social Engineering Tactieken</h2>
-        <p>Bekijk de onderstaande e-mail. Welke manipulatietechniek wordt hier voornamelijk gebruikt?</p>
-        
-        <div class="email-preview">
-            <div class="email-header">Van: account-security@netflix-update.com<br>Onderwerp: Systeemwaarschuwing: Account wordt GEBLOKKEERD!</div>
-            Beste klant, vul uw gegevens <b>binnen 2 uur</b> in, anders wordt uw account permanent verwijderd.
-        </div>
-
-        <ul>
-            <li onclick="toonHint('p2-goed', false)">Urgentie & Angst (Willekeurige tijdsdruk opvoeren)</li>
-            <li onclick="toonHint('p2-fout1', true)">Wederkerigheid (Jou iets gratis cadeau doen)</li>
-        </ul>
-        <div id="p2-fout1" class="hint fout-hint">Onjuist. Er wordt in deze mail niks gratis aangeboden.</div>
-        <div id="p2-goed" class="hint"><b>Correct!</b> Tijdsdruk zorgt ervoor dat je stopt met logisch nadenken. <br>🔑 <b>Noteer het tweede cijfer: 1</b></div>
-    </div>
-
-    <div class="puzzel-box">
-        <h2>Puzzel 3: De Afzender Scannen</h2>
-        <p>Je krijgt een e-mail van school. Waar kijk je als eerste naar?</p>
-        <ul>
-            <li onclick="toonHint('p3-fout1', true)">De displaynaam (bijv. "Je School Administratie")</li>
-            <li onclick="toonHint('p3-goed', false)">Het daadwerkelijke e-mailadres achter de naam na de @</li>
-        </ul>
-        <div id="p3-fout1" class="hint fout-hint">Fout. Iedereen kan zijn weergavenaam handmatig aanpassen naar "Je School".</div>
-        <div id="p3-goed" class="hint"><b>Helemaal juist!</b> De domeinnaam achter de @ verraadt de hacker direct. <br>🔑 <b>Noteer het derde cijfer: 8</b></div>
-    </div>
-
-    <div class="puzzel-box">
-        <h2>Puzzel 4: De Gevaarlijke Bijlage</h2>
-        <p>Welk bestand is in werkelijkheid malware i.p.v. een afbeelding?</p>
-        <ul>
-            <li onclick="toonHint('p4-fout1', true)">klassenfeest_fotos.jpg</li>
-            <li onclick="toonHint('p4-goed', false)">leuke_fotos.jpg.exe</li>
-        </ul>
-        <div id="p4-fout1" class="hint fout-hint">Nee, .jpg is een normale, veilige afbeelding.</div>
-        <div id="p4-goed" class="hint"><b>Trap er niet in!</b> Het eindigt op `.exe`, dus het start een programma dat je pc infecteert! <br>🔑 <b>Noteer het vierde cijfer: 2</b></div>
-    </div>
-
-    <div class="puzzel-box" style="border: 2px solid #eab308;">
-        <h2>Het Anti-Phishing Filter Activeren</h2>
-        <p>Voer de 4-cijferige storingscode in om de kwaadaardige e-mails te blokkeren:</p>
-        
-        <input type="text" id="code" placeholder="4-cijferige code">
-        <button class="btn-room3" onclick="checkCode3()">Activeer Filter</button>
-    </div>
-
+<div id="timer-display" style="font-size: 24px; font-weight: bold; color: #f43f5e; background: #0f172a; padding: 10px; border: 2px solid #f43f5e; border-radius: 6px; display: inline-block; margin-bottom: 20px; font-family: monospace; box-shadow: 0 0 15px rgba(244,63,94,0.2);">
+    ⏱️ Tijd over: 30:00
 </div>
 
+<h1>🎣 SYSTEM OVERRIDE: PHISHING & SOCIAL ENGINEERING</h1>
+<p style="color: #ef4444; font-weight: bold;">⚠️ CRISIS-SITUATIE: De mailserver ligt onder vuur. Meerkeuze-opties zijn uitgeschakeld. Je moet de dreigingen handmatig identificeren. Elke foute invoer kost DIRECT 1 minuut!</p>
+
+<hr style="border-color: #1e293b;">
+
+<div class="puzzel-box">
+    <h2>Puzzel 1: Subdomein Spoofing Analyse</h2>
+    <p>Onderzoek deze kwaadaardige URL die via smishing is binnengekomen. Wat is het <b>daadwerkelijke hoofd-domein</b> waar de slachtoffers naartoe worden gestuurd? (Typ de volledige domeinnaam inclusief extensie, bijv. <i>google.com</i>)</p>
+    
+    <div class="cipher-box">https://www.rabobank.nl.veilig-inloggen-identifier.com/secure/login/token?id=9284</div>
+    
+    <input type="text" id="p1-input" placeholder="Typ het echte hoofddomein...">
+    <button onclick="checkPuzzel1()">Domein Isoleren</button>
+    
+    <div id="p1-fout" class="fout-hint">❌ <b>PARSING ERROR (-60s):</b> Onjuist domein. Onthoud: het hoofddomein staat altijd direct links van de allereerste enkele schuine streep (/), exclusief subdomeinen!</div>
+    <div id="p1-goed" class="code-reveal">
+        <b>[SUCCESS]</b> Aanvalspunt geïdentificeerd. Het domein is inderdaad 'veilig-inloggen-identifier.com'.<br>
+        🔑 <b>Eerste Code-Fragment: 4</b>
+    </div>
+</div>
+
+<div class="puzzel-box">
+    <h2>Puzzel 2: Psychologische Triggers</h2>
+    <p>Welke specifieke social engineering-tactiek (manipulatietechniek) wordt in deze spear-phishing mail misbruikt om het slachtoffer te dwingen logisch nadenken uit te schakelen? (Typ 1 woord: <b>ANGST</b> of <b>WEDERKERIGHEID</b> of <b>URGENTIE</b>)</p>
+    
+    <div class="email-preview">
+        <div class="email-header">Van: alert@microsoft-security-incident-response.net<br>Onderwerp: KRITIEK: Onmiddellijke actie vereist - Account sluiting binnen 15 minuten!</div>
+        Uw OneDrive cloud-opslag is gekoppeld aan illegale activiteiten. Indien u uw identiteit niet <b>binnen 15 minuten</b> verifieert via de onderstaande link, wordt uw account permanent gewist en wordt uw IP-adres doorgestuurd naar de autoriteiten.
+    </div>
+    
+    <input type="text" id="p2-input" placeholder="Typ de manipulatietechniek...">
+    <button onclick="checkPuzzel2()">Sociaal Patroon Herkennen</button>
+    
+    <div id="p2-fout" class="fout-hint">❌ <b>TRIGGER MISMATCH (-60s):</b> Onjuist. Analyseer de tekst opnieuw. De hacker probeert paniek te zaaien door een extreem krappe deadline op te leggen.</div>
+    <div id="p2-goed" class="code-reveal">
+        <b>[SUCCESS]</b> Psychologische manipulatie doorzien. Kunstmatige tijdsdruk valt onder urgentie.<br>
+        🔑 <b>Tweede Code-Fragment: 1</b>
+    </div>
+</div>
+
+<div class="puzzel-box">
+    <h2>Puzzel 3: De E-mail Header Header Spoofing</h2>
+    <p>Je inspecteert de technische header van een verdachte mail. De 'From'-weergavenaam zegt "School Directie", maar de mailserver faalt voor de cryptografische afzender-authenticatie. Welke bekende drieletterige internet-beveiligingstechniek (afkorting) controleert of de verzendende IP-server daadwerkelijk namens het domein mag mailen?</p>
+    
+    <div class="cipher-box" style="color: #a855f7;">Header logs: Authentication-Results: mx.google.com; [AFKORTING]=fail header.from=school.nl</div>
+    
+    <input type="text" id="p3-input" placeholder="Typ de 3-letterige afkorting...">
+    <button onclick="checkPuzzel3()">Header Scannen</button>
+    
+    <div id="p3-fout" class="fout-hint">❌ <b>AUTHENTICATION FAILED (-60s):</b> Onjuiste term. Hint: Het staat voor 'Sender Policy Framework'. Dit DNS-record somt op welke IP's mail mogen sturen.</div>
+    <div id="p3-goed" class="code-reveal">
+        <b>[SUCCESS]</b> Protocol herkend. SPF-records voorkomen dat hackers willekeurig domeinen namaken.<br>
+        🔑 <b>Derde Code-Fragment: 8</b>
+    </div>
+</div>
+
+<div class="puzzel-box">
+    <h2>Puzzel 4: De Verborgen Extensie</h2>
+    <p>Een hacker probeert ransomware te droppen via een bijlage en maakt gebruik van een dubbele extensie. Wat is de <b>werkelijke, gevaarlijke bestandsextensie</b> van dit bestand die het operating system zal uitvoeren? (Typ de extensie inclusief de punt, bijv. <i>.txt</i> of <i>.html</i>)</p>
+    
+    <div class="cipher-box" style="color: #eab308;">Examen_Resultaten_2026.pdf.exe</div>
+    
+    <input type="text" id="p4-input" placeholder="Typ de werkelijke extensie...">
+    <button onclick="checkPuzzel4()">Malware Isoleren</button>
+    
+    <div id="p4-fout" class="fout-hint">❌ <b>SANDBOX BREACH (-60s):</b> Fout! Windows voert altijd de allerlaatste extensie aan het einde van de bestandsnaam uit. Kijk goed waar het bestand écht in eindigt.</div>
+    <div id="p4-goed" class="code-reveal">
+        <b>[SUCCESS]</b> Aanval afgeslagen. Het bestand is een uitvoerbaar executable (.exe) bestand en géén PDF!<br>
+        🔑 <b>Vierde Code-Fragment: 2</b>
+    </div>
+</div>
+
+<div class="puzzel-box" style="border: 2px solid #eab308;">
+    <h2>Het Anti-Phishing Filter Activeren</h2>
+    <p>Voer de 4 samengevoegde Code-Fragmenten in om de malware-filters te activeren en Kamer 3 te verlaten:</p>
+    
+    <input type="text" id="code" placeholder="4-cijferige code">
+    <button onclick="checkCodeKamer3()">ACTIVEER FILTER</button>
+</div>
+
+<script>
+// Straf-functie die direct synchroniseert met script.js en localStorage
+function pasTijdStrafToe() {
+    let huidigeTijd = parseInt(localStorage.getItem("escape_timer")) || 1800;
+    huidigeTijd = Math.max(0, huidigeTijd - 60); 
+    localStorage.setItem("escape_timer", huidigeTijd);
+    
+    let minuten = Math.floor(huidigeTijd / 60);
+    let seconden = currentTijd = huidigeTijd % 60;
+    if (seconden < 10) seconden = "0" + seconden;
+    if (minuten < 10) minuten = "0" + minuten;
+    
+    let timerElement = document.getElementById("timer-display");
+    if (timerElement) {
+        timerElement.innerText = "⏱️ Tijd over: " + minuten + ":" + seconden;
+    }
+}
+
+// Puzzel 1 Check
+function checkPuzzel1() {
+    let input = document.getElementById("p1-input").value.trim().toLowerCase();
+    if (input === "veilig-inloggen-identifier.com") {
+        document.getElementById("p1-goed").style.display = "block";
+        document.getElementById("p1-fout").style.display = "none";
+    } else {
+        pasTijdStrafToe();
+        document.getElementById("p1-fout").style.display = "block";
+        document.getElementById("p1-goed").style.display = "none";
+    }
+}
+
+// Puzzel 2 Check
+function checkPuzzel2() {
+    let input = document.getElementById("p2-input").value.trim().toUpperCase();
+    if (input === "URGENTIE") {
+        document.getElementById("p2-goed").style.display = "block";
+        document.getElementById("p2-fout").style.display = "none";
+    } else {
+        pasTijdStrafToe();
+        document.getElementById("p2-fout").style.display = "block";
+        document.getElementById("p2-goed").style.display = "none";
+    }
+}
+
+// Puzzel 3 Check
+function checkPuzzel3() {
+    let input = document.getElementById("p3-input").value.trim().toUpperCase();
+    if (input === "SPF") {
+        document.getElementById("p3-goed").style.display = "block";
+        document.getElementById("p3-fout").style.display = "none";
+    } else {
+        pasTijdStrafToe();
+        document.getElementById("p3-fout").style.display = "block";
+        document.getElementById("p3-goed").style.display = "none";
+    }
+}
+
+// Puzzel 4 Check
+function checkPuzzel4() {
+    let input = document.getElementById("p4-input").value.trim().toLowerCase();
+    if (input === ".exe") {
+        document.getElementById("p4-goed").style.display = "block";
+        document.getElementById("p4-fout").style.display = "none";
+    } else {
+        pasTijdStrafToe();
+        document.getElementById("p4-fout").style.display = "block";
+        document.getElementById("p4-goed").style.display = "none";
+    }
+}
+
+// Eindcode check voor Kamer 3
+function checkCodeKamer3() {
+    let codeInput = document.getElementById("code").value.trim();
+    if (codeInput === "4182") {
+        alert("🔓 MALWARE-FILTER GEACTIVEERD! Je hebt alle phishing-dreigingen geneutraliseerd. Kamer 3 voltooid!");
+        if (typeof checkCode === "function") {
+            checkCode(); 
+        } else {
+            alert("Gefeliciteerd! Je hebt het spel uitgespeeld.");
+        }
+    } else {
+        pasTijdStrafToe();
+        alert("🚨 FILTER GEWEIGERD! Ongeldige storingscode ingevoerd. Systeembeveiliging trekt 1 minuut van de klok af.");
+    }
+}
+</script>
 <script src="script.js"></script>
 
 </body>
