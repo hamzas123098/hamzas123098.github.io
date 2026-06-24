@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operatie Firewall - Introductie</title>
+    <title>Project Blackout - Introductie</title>
     <style>
         body {
             background-color: #020617; /* Extra donkere cyber achtergrond */
@@ -15,7 +15,7 @@
             align-items: center;
             justify-content: center;
             margin: 0;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
@@ -34,7 +34,7 @@
             box-shadow: 0 0 30px rgba(239, 68, 68, 0.3);
             padding: 40px;
             border-radius: 12px;
-            max-width: 650px;
+            max-width: 750px;
             text-align: center;
             z-index: 1;
             position: relative;
@@ -62,19 +62,26 @@
         }
 
         p {
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.6;
             color: #cbd5e1;
-            margin: 20px 0;
+            margin: 15px 0;
+            text-align: left;
         }
 
         .highlight {
             color: #38bdf8; /* Cyaan highlight voor belangrijke info */
             font-weight: bold;
         }
+        
+        .insider-highlight {
+            color: #eab308; /* Goud/Geel voor de insider dreiging */
+            font-weight: bold;
+        }
 
         .btn-container {
-            margin-top: 40px;
+            margin-top: 35px;
+            text-align: center;
         }
 
         button {
@@ -100,7 +107,6 @@
             transform: scale(1.05);
         }
 
-        /* Subtiele animatie voor de waarschuwingsbalk */
         @keyframes pulse {
             0% { opacity: 0.8; }
             50% { opacity: 1; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
@@ -112,26 +118,39 @@
 
 <div class="container">
     <div class="warning-banner">
-        ⚠️ Systeem Inbreuk Gedetecteerd ⚠️
+        ⚠️ ALERT: SYSTEM OVERRIDE IN PROGRESS ⚠️
     </div>
 
-    <h1>OPERATIE FIREWALL</h1>
+    <h1>PROJECT BLACKOUT</h1>
 
     <p>
-        Een onbekende hackerscollectief heeft een destructief ransomware-virus op het schoolnetwerk geplaatst. De servers worden momenteel vergrendeld.
+        Bij softwarebedrijf <span class="highlight">Nexora Systems</span> lijkt alles normaal, totdat op maandagochtend alle schermen zwart worden. Een rood bericht verschijnt op iedere computer: <i>"Jullie netwerk is overgenomen."</i>
     </p>
 
     <p>
-        Jullie team is onze laatste hoop. Jullie hebben exact <span class="highlight">40 minuten</span> om alle digitale beveiligingskamers te hacken, de codes te kraken en het virus definitief uit te schakelen.
+        De medewerkers denken eerst aan een simpele storing, maar al snel blijkt dat het bedrijf slachtoffer is geworden van een gigantische cyberaanval. Klantgegevens zijn gestolen, beveiligingscamera’s reageren niet meer en de servers dreigen volledig gewist te worden.
     </p>
 
-    <p style="font-style: italic; color: #94a3b8; font-size: 14px;">
-        Klik op de knop hieronder om de verbinding te starten. De tijd begint direct te lopen.
+    <p>
+        Jullie team wordt met spoed ingeschakeld als <span class="highlight">digitale forensische onderzoekers</span>. Volgens de eerste analyse begon alles met één simpele phishingmail. Een medewerker ontving een bericht dat leek te komen van de directeur: <i>"Belangrijk: vernieuw direct je wachtwoord via onderstaande link."</i> Een klik was genoeg.
+    </p>
+
+    <p>
+        Vanaf dat moment kreeg een mysterieuze hackersorganisatie genaamd <span class="highlight">Blackout</span> toegang tot het netwerk. Ze verstopten aanwijzingen, versleutelden bestanden en lieten puzzels achter in de systemen van het bedrijf. Maar de hackers willen meer dan geld. Ze zoeken naar een geheim projectbestand dat verborgen staat op een afgesloten server diep in het gebouw.
+    </p>
+
+    <p>
+        Terwijl de klok aftelt, moeten jullie phishingmails analyseren, wachtwoorden kraken, geïnfecteerde servers herstellen, firewalls activeren en de identiteit van de <span class="insider-highlight">insider</span> ontdekken die de hackers heeft geholpen. Want er blijkt een verrader binnen het bedrijf te zitten... en die persoon zit misschien dichterbij dan jullie denken.
+    </p>
+
+    <p style="border-left: 3px solid #ef4444; padding-left: 15px; font-style: italic; background-color: rgba(239, 68, 68, 0.05);">
+        Plotseling springt een monitor aan. Een vervormde stem klinkt door de speakers:<br>
+        <b>“Jullie hebben nog <span class="highlight">30 minuten</span>. Geef ons het bestand, of alles verdwijnt.”</b>
     </p>
 
     <div class="btn-container">
         <a href="kamer1.html">
-            <button>Start Missie</button>
+            <button>Start Onderzoek</button>
         </a>
     </div>
 </div>
