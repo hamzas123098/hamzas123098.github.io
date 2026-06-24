@@ -134,31 +134,46 @@
 </div>
 
 <div class="puzzel-box">
-    <h2>Puzzel 3: De Klassieke Code</h2>
+    <h2>Puzzel 3: Hexadecimale Netwerkdump</h2>
+    <p>Blackout heeft data buitgemaakt via een rauwe hex-dump. Converteer deze twee hexadecimale bytes naar ASCII-tekens (tekst, typ in HOOFDLETTERS):</p>
+    
+    <div class="cipher-box" style="color: #a855f7; letter-spacing: 10px;">4E 4F</div>
+    
+    <input type="text" id="p3-input" placeholder="Vertaal Hex naar tekst...">
+    <button onclick="checkPuzzel3()">Hex Converteren</button>
+    
+    <div id="p3-fout" class="fout-hint">❌ <b>CONVERSION ERROR (-60s):</b> Incorrecte ASCII output. Hint: Gebruik de ASCII-tabel. 4E in hex staat voor de 14e letter van het alfabet (N). Wat is 4F?</div>
+    <div id="p3-goed" class="code-reveal">
+        <b>[SUCCESS]</b> Hex-data omgezet naar leesbare tekst.<br>
+        🔑 <b>Derde Code-Fragment: 3</b>
+    </div>
+</div>
+
+<div class="puzzel-box">
+    <h2>Puzzel 4: De Klassieke Code</h2>
     <p>Nog een onderschept bericht in Caesar-versleuteling (wederom 3 letters terugschuiven, typ in HOOFDLETTERS):</p>
     
     <div class="cipher-box">Z H O F R P H</div>
     
-    <input type="text" id="p3-input" placeholder="Typ de begroeting...">
-    <button onclick="checkPuzzel3()">Systeemkraak</button>
+    <input type="text" id="p4-input" placeholder="Typ de begroeting...">
+    <button onclick="checkPuzzel4()">Systeemkraak</button>
     
-    <div id="p3-fout" class="fout-hint">❌ <b>DECRYPTION FAILED (-60s):</b> Toegang geweigerd. Berekening klopt niet. Z min 3 stappen terug is de W...</div>
-    <div id="p3-goed" class="code-reveal">
+    <div id="p4-fout" class="fout-hint">❌ <b>DECRYPTION FAILED (-60s):</b> Toegang geweigerd. Berekening klopt niet. Z min 3 stappen terug is de W...</div>
+    <div id="p4-goed" class="code-reveal">
         <b>[SUCCESS]</b> Systeemtaal gedecodeerd.<br>
-        🔑 <b>Derde Code-Fragment: 6</b>
+        🔑 <b>Vierde Code-Fragment: 6</b>
     </div>
 </div>
 
 <div class="puzzel-box" style="border: 2px solid #a855f7;">
     <h2>Systeem Toegangscode</h2>
-    <p>Voer de 3 samengevoegde Code-Fragmenten in om het Cryptografie Lab definitief te verlaten:</p>
+    <p>Voer de 4 samengevoegde Code-Fragmenten in om het Cryptografie Lab definitief te verlaten:</p>
     
-    <input type="text" id="code" placeholder="3-cijferige code">
+    <input type="text" id="code" placeholder="4-cijferige code">
     <button onclick="checkCodeKamer2()">MAINFRAME UNLOCK</button>
 </div>
 
 <script>
-// Straf-functie die direct synchroniseert met script.js en localStorage
 function pasTijdStrafToe() {
     let huidigeTijd = parseInt(localStorage.getItem("escape_timer")) || 1800;
     huidigeTijd = Math.max(0, huidigeTijd - 60); 
@@ -175,7 +190,6 @@ function pasTijdStrafToe() {
     }
 }
 
-// Puzzel 1 Check
 function checkPuzzel1() {
     let input = document.getElementById("p1-input").value.trim().toUpperCase();
     if (input === "HELLO") {
@@ -188,7 +202,6 @@ function checkPuzzel1() {
     }
 }
 
-// Puzzel 2 Check
 function checkPuzzel2() {
     let input = document.getElementById("p2-input").value.trim().toUpperCase();
     if (input === "HELP") {
@@ -201,10 +214,9 @@ function checkPuzzel2() {
     }
 }
 
-// Puzzel 3 Check
 function checkPuzzel3() {
     let input = document.getElementById("p3-input").value.trim().toUpperCase();
-    if (input === "WELCOME") {
+    if (input === "NO") {
         document.getElementById("p3-goed").style.display = "block";
         document.getElementById("p3-fout").style.display = "none";
     } else {
@@ -214,13 +226,24 @@ function checkPuzzel3() {
     }
 }
 
-// Eindcode check voor Kamer 2
+function checkPuzzel4() {
+    let input = document.getElementById("p4-input").value.trim().toUpperCase();
+    if (input === "WELCOME") {
+        document.getElementById("p4-goed").style.display = "block";
+        document.getElementById("p4-fout").style.display = "none";
+    } else {
+        pasTijdStrafToe();
+        document.getElementById("p4-fout").style.display = "block";
+        document.getElementById("p4-goed").style.display = "none";
+    }
+}
+
 function checkCodeKamer2() {
     let codeInput = document.getElementById("code").value.trim();
-    if (codeInput === "516") {
+    if (codeInput === "5136") {
         alert("🔓 MAINFRAME GEKRAAKT! Je hebt Kamer 2 succesvol voltooid.");
-        if (typeof checkCode === "function") {
-            checkCode(); 
+        if (typeof checkCode2 === "function") {
+            checkCode2(); 
         } else {
             window.location.href = "kamer3.html"; 
         }
