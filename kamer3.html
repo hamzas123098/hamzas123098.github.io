@@ -188,7 +188,7 @@
     
     <div id="p4-fout" class="fout-hint">❌ <b>SANDBOX BREACH (-60s):</b> Fout! Windows voert altijd de allerlaatste extensie aan het einde van de bestandsnaam uit. Kijk goed waar het bestand écht in eindigt.</div>
     <div id="p4-goed" class="code-reveal">
-        <b>[SUCCESS]</b> Aanval afgeslagen. Het bestand is een uitvoerbaar executable (.exe) bestand und géén PDF!<br>
+        <b>[SUCCESS]</b> Aanval afgeslagen. Het bestand is een uitvoerbaar executable (.exe) bestand en géén PDF!<br>
         🔑 <b>Vierde Code-Fragment: 2</b>
     </div>
 </div>
@@ -211,7 +211,7 @@ function pasTijdStrafToe() {
     let minuten = Math.floor(huidigeTijd / 60);
     let seconden = huidigeTijd % 60;
     if (seconden < 10) seconden = "0" + seconden;
-    if (minuten < 10) minuten = "0" + minuten;
+    if (minuten < 10) minutes = "0" + minuten;
     
     let timerElement = document.getElementById("timer-display");
     if (timerElement) {
