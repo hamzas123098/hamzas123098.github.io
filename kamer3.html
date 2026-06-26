@@ -162,17 +162,23 @@
 </div>
 
 <div class="puzzel-box">
+<div class="puzzel-box">
     <h2>Puzzel 3: De E-mail Header Spoofing</h2>
     <p>Je inspecteert de technische header van een verdachte mail. De 'From'-weergavenaam zegt "School Directie", maar de mailserver faalt voor de cryptografische afzender-authenticatie. Welke bekende drieletterige internet-beveiligingstechniek (afkorting) controleert of de verzendende IP-server daadwerkelijk namens het domein mag mailen?</p>
     
     <div class="cipher-box" style="color: #a855f7;">Header logs: Authentication-Results: mx.google.com; [AFKORTING]=fail header.from=school.nl</div>
     
+    <div style="background: #1e293b; padding: 12px; border-radius: 4px; font-size: 13px; color: #94a3b8; margin-bottom: 15px; border-left: 3px solid #38bdf8;">
+        📋 <b>INTERNE SRE-MEMO (Incident Response):</b><br>
+        <i>"Houd er rekening mee dat kwaadwillenden onze domeinnaam misbruiken. Zorg ervoor dat het DNS-record voor het <b>Sender Policy Framework (SPF)</b> correct is geconfigureerd in onze zone. Als de ontvangende server dit protocol niet kan valideren, zal de mail als 'fail' worden gemarkeerd in de netwerklogs."</i>
+    </div>
+    
     <input type="text" id="p3-input" placeholder="Typ de 3-letterige afkorting...">
     <button onclick="checkPuzzel3()">Header Scannen</button>
     
-    <div id="p3-fout" class="fout-hint">❌ <b>AUTHENTICATION FAILED (-60s):</b> Onjuiste term. Hint: Het staat voor 'Sender Policy Framework'. Dit DNS-record somt op welke IP's mail mogen sturen.</div>
+    <div id="p3-fout" class="fout-hint">❌ <b>AUTHENTICATION FAILED (-60s):</b> Incorrecte term. Lees de bijgevoegde memo van de systeembeheerder goed door om te zien welk protocol hier faalt!</div>
     <div id="p3-goed" class="code-reveal">
-        <b>[SUCCESS]</b> Protocol herkend. SPF-records voorkomen dat hackers willekeurig domeinen namaken.<br>
+        <b>[SUCCESS]</b> Protocol herkend. Dit record voorkomt dat hackers willekeurig domeinen namaken.<br>
         🔑 <b>Derde Code-Fragment: 8</b>
     </div>
 </div>
